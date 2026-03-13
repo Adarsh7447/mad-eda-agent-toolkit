@@ -1,0 +1,902 @@
+{
+  "name": "Tech Stack Finder - Oxylabs custom parser",
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -4336,
+        624
+      ],
+      "id": "a33866d2-2916-4089-8b0c-abae4963a13a",
+      "name": "When Executed by Another Workflow",
+      "alwaysOutputData": true,
+      "executeOnce": false,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://realtime.oxylabs.io/v1/queries",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "authorization",
+              "value": "Basic aGVtYW50aF9mZWxsb19HR0dvZDpXZF9TNEdVRzZVY3lZNEs="
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "source",
+              "value": "universal"
+            },
+            {
+              "name": "url",
+              "value": "=https://builtwith.com/https://{{ $json.Website .extractDomain().trim() }}"
+            },
+            {
+              "name": "parse",
+              "value": "true"
+            },
+            {
+              "name": "render"
+            },
+            {
+              "name": "parser_preset",
+              "value": "rashi_techstack"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -4112,
+        528
+      ],
+      "id": "4ec250c9-d511-4da8-8028-24f05ee51d3f",
+      "name": "Oxylab custom parser",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "results[0].content.headings",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -3888,
+        384
+      ],
+      "id": "99082a5b-2e19-4ed1-a570-673ecdbf41d6",
+      "name": "Split Out",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "fe6d39e4-b3f6-45dc-a5be-95c8ba8bfc8f",
+              "leftValue": "={{ $json.heading }}",
+              "rightValue": "=Content Management System",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "a6bb5384-bfa4-45c5-b179-e22e71c619c1",
+              "leftValue": "={{ $json.heading }}",
+              "rightValue": "Agency",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "6f39b14e-f8d7-4ce2-a900-2d2ab99439bc",
+              "leftValue": "={{ $json.heading }}",
+              "rightValue": "Analytics and Tracking",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -3664,
+        384
+      ],
+      "id": "09b58b42-15ca-4acd-be95-4e1749694add",
+      "name": "Filter",
+      "alwaysOutputData": true,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -2640,
+        624
+      ],
+      "id": "4530ae71-aff5-4566-baea-3fa77bff29f1",
+      "name": "Merge4",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -2416,
+        624
+      ],
+      "id": "ed2d246f-2487-44a2-ba90-794ecbdd06b5",
+      "name": "Aggregate1"
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"crm\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      }\n    },\n    \"marketing_tools\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      }\n    }\n  },\n  \"required\": [\"crm\", \"marketing_tools\"]\n}\n"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        -4336,
+        64
+      ],
+      "id": "2da55c54-925a-4b82-877e-3dfa5ef952c9",
+      "name": "Structured Output Parser3"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "Team_Summary",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "uuid",
+              "condition": "eq",
+              "keyValue": "={{ $('When Executed by Another Workflow').item.json.uuid }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "team_crm_main",
+              "fieldValue": "={{ $json.crm ? '{\"' + $json.crm + '\"}' : '{\"Not found\"}' }}"
+            },
+            {
+              "fieldId": "marketing tools",
+              "fieldValue": "={{ '{\"' + $json.marketing_tools.split(',').map(i => i.trim()).join('\",\"') + '\"}' }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -1472,
+        688
+      ],
+      "id": "c03e7164-0094-40da-926c-0368fc0a0ec5",
+      "name": "Update a row2",
+      "credentials": {
+        "supabaseApi": {
+          "id": "58NjINxjYrC0hA6P",
+          "name": "Supabase Fello Innovation"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "let result = {};\nlet sourceError = false;\n\nfor (const item of items) {\n  // Detect explicit error input\n  if (item.json?.source === \"error\") {\n    sourceError = true;\n  }\n\n  const heading = item.json?.heading;\n  let text = item.json?.text || \"\";\n\n  if (typeof heading !== \"string\" || !text) continue;\n\n  // Remove duplicate consecutive words before \"Usage Statistics\"\n  text = text.replace(/\\b(\\w+)\\s+\\1(?=\\s+Usage Statistics)/gi, '$1');\n\n  // Prepend heading to text\n  let finalText = `${heading}: ${text}`;\n\n  if (heading === \"Analytics and Tracking\") {\n    result[\"Analytics and Tracking\"] = finalText;\n  } else if (heading === \"Content Management System\") {\n    result[\"Content Management System\"] = finalText;\n  } else if (heading === \"Agency\") {\n    result[\"Agency\"] = finalText;\n  }\n}\n\n// If any error exists → return ONLY { source: \"error\" }\nif (sourceError) {\n  return [\n    {\n      json: {\n        source: \"error found\"\n      }\n    }\n  ];\n}\n\n// Normal return\nreturn [\n  { json: result }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -3440,
+        384
+      ],
+      "id": "fcd22526-ca37-42b0-8932-b80b0ead1600",
+      "name": "Deduplicate the tools",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"Analytics and Tracking (CRM Related)\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      }\n    },\n    \"Content Management System\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      }\n    },\n    \"Agency\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      }\n    }\n  },\n  \"required\": [\n    \"Analytics and Tracking (CRM Related)\",\n    \"Content Management System\",\n    \"Agency\"\n  ]\n}\n"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        -4336,
+        -144
+      ],
+      "id": "d9f6e551-5c8b-4c45-9a68-36cf6577dd84",
+      "name": "Structured Output Parser4"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bdbbab72-57c5-44f5-9869-7e32aa039cb4",
+              "name": "body.content",
+              "value": "={{ $json.rashi_crm }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -3440,
+        864
+      ],
+      "id": "9b16adb7-b609-4ec4-ae16-7a2f8ba00704",
+      "name": "get crm"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "Team_Summary",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "uuid",
+              "condition": "eq",
+              "keyValue": "={{ $('When Executed by Another Workflow').item.json.uuid }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "team_crm_main",
+              "fieldValue": "={{\"{\\\"\" + \"Not found on BuiltWith\" + \"\\\"}\"}}"
+            },
+            {
+              "fieldId": "marketing tools",
+              "fieldValue": "={{\"{\\\"\" + \"Not found on BuiltWith\" + \"\\\"}\"}}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -1696,
+        496
+      ],
+      "id": "a368ad06-85c3-4b04-b19d-154cf01b1f75",
+      "name": "error",
+      "credentials": {
+        "supabaseApi": {
+          "id": "58NjINxjYrC0hA6P",
+          "name": "Supabase Fello Innovation"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserAutofixing",
+      "typeVersion": 1,
+      "position": [
+        -4128,
+        -144
+      ],
+      "id": "d9d266fc-45d9-4a20-aa38-a16ed8ec8493",
+      "name": "Auto-fixing Output Parser"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -4336,
+        1504
+      ],
+      "id": "a2c2ccd3-699e-4983-8358-7819a609324f",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "nvL1NbIXXT7JIaoa",
+          "name": "Rashi Gemini"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "body.content",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -3152,
+        864
+      ],
+      "id": "3017119e-07ae-44df-967e-26fe711764e2",
+      "name": "Split Out1"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "new_unified_agents",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "supabase_uuid",
+              "condition": "eq",
+              "keyValue": "={{ $('When Executed by Another Workflow').first().json.supabase_uuid }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "tech_stack",
+              "fieldValue": "={{ [ { \"crm\": [], \"marketing_tools\": [] } ] }}"
+            },
+            {
+              "fieldId": "updated_at",
+              "fieldValue": "={{ $now }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -4112,
+        1712
+      ],
+      "id": "bec91ce1-97e1-4c67-b309-e849718a4e7e",
+      "name": "error1",
+      "credentials": {
+        "supabaseApi": {
+          "id": "58NjINxjYrC0hA6P",
+          "name": "Supabase Fello Innovation"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -4336,
+        1712
+      ],
+      "id": "46934d79-c20f-41cf-8549-b04bc5cd0823",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "text": "=You are intelligent information extractor. Your goal is to extract realestate software tool names from unstructured text into a JSON format.You will be getting input containing 3 headings. \"Analytics and Tracking\", \"Content Management System\" and \"Agency\". You might not receive all the inputs all the time. \n\nYou need to identify and extract all the tool names mentioned under \"Content Management System\" and \"Agency\" accurately without missing any tool name.\n\nIdentify the tool names which are related to CRM or Realestate in \"Analytics and Tracking\". \nNever add any tools on your own. Just extract from the input. Don't miss any relevant tools.\n\nPlease output only valid JSON, without any markdown, code block, or extra text. \n\nInput: {{ $json['Analytics and Tracking'] }} \n\n{{ $json['Content Management System'] }}\n\n{{ $json.Agency }}\n\n",
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"oneOf\": [\n    {\n      \"type\": \"object\",\n      \"properties\": {\n        \"marketing_tools\": {\n          \"type\": \"array\",\n          \"items\": {\n            \"type\": \"string\"\n          }\n        }\n      },\n      \"required\": [\"marketing_tools\"]\n    }  \n  ]\n}\n",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.informationExtractor",
+      "typeVersion": 1.2,
+      "position": [
+        -3216,
+        272
+      ],
+      "id": "839b5018-f63a-44a0-865c-8457b1d120fe",
+      "name": "Information Extractor",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// -------------------------------------------\n// UPDATED ALLOWED CRM LIST\n// -------------------------------------------\nconst crmList = [\n  \"Follow Up Boss\",\n  \"Sierra Interactive\",\n  \"KW Command\",\n  \"BoldTrail\",\n  \"KVCore\",\n  \"Lofty (Chime)\",\n  \"Chime\",\n  \"CINC\",\n  \"Real Geeks\",\n  \"iHouseWeb\",\n  \"Agent Image\",\n  \"Boomtown ROI\",\n  \"Boomtown\",\n  \"Brivity\",\n  \"Commissions Inc\",\n  \"Curaytor\",\n  \"Hire Aiva\",\n  \"IDXBroker\",\n  \"Inside Real Estate\",\n  \"MoxiWorks\",\n  \"RealScout\",\n  \"Sisu\",\n  \"Spark Platform\",\n  \"Terabitz\",\n  \"Wolfnet\",\n  \"iHomefinder\",\n  \"Homebot\",\n  \"Realvolution\"\n];\n\n// -------------------------------------------\n// FUZZY CRM CHECK\n// -------------------------------------------\nfunction isCRM(tool) {\n  if (!tool) return false;\n  const name = String(tool).toLowerCase();\n  return crmList.some(crm => name.includes(crm.toLowerCase()));\n}\n\n// -------------------------------------------\n// MAIN EXTRACTION LOGIC\n// -------------------------------------------\nconst item = $input.first().json.data[0];\nlet collected = [];\n\n// --------------------------------------------------\n// 1) Collect from output.marketing_tools\n// --------------------------------------------------\nif (Array.isArray(item.output?.marketing_tools)) {\n  collected.push(...item.output.marketing_tools);\n}\n\n// --------------------------------------------------\n// 2) Collect from marketing_tools1, marketing_tools2, etc.\n//    (Can be array or stringified JSON)\n// --------------------------------------------------\nfor (const key of Object.keys(item)) {\n  if (key.startsWith(\"marketing_tools\") && key !== \"output\") {\n    const raw = item[key];\n\n    if (Array.isArray(raw)) {\n      collected.push(...raw);\n      continue;\n    }\n\n    if (typeof raw === \"string\") {\n      try {\n        const parsed = JSON.parse(raw);\n        if (Array.isArray(parsed)) collected.push(...parsed);\n      } catch {\n        // ignore\n      }\n    }\n  }\n}\n\n// -------------------------------------------\n// CLEANING\n// -------------------------------------------\ncollected = collected\n  .filter(t => t && t.trim() !== \"\")\n  .map(t => t.trim());\n\n// remove duplicates\ncollected = [...new Set(collected)];\n\n// Backup copy BEFORE removing \"Not Found\"\nconst originalCollected = [...collected];\n\n// Remove \"Not Found\" for normal logic\ncollected = collected.filter(t => t !== \"Not Found\");\n\n// -------------------------------------------\n// SPECIAL CASE CHECK\n// -------------------------------------------\nconst allNotFound =\n  originalCollected.length === 0 ||\n  originalCollected.every(t => t === \"Not Found\");\n\nif (item.source === \"error\" && allNotFound) {\n  return [\n    {\n      output: {\n        crm: [],\n        marketing_tools: [\"Not found on Buildwith\"]\n      }\n    }\n  ];\n}\n\n// -------------------------------------------\n// NORMAL CLASSIFICATION\n// -------------------------------------------\nconst crm = [];\nconst marketing = [];\n\nfor (const tool of collected) {\n  if (isCRM(tool)) crm.push(tool);\n  else marketing.push(tool);\n}\n\n// -------------------------------------------\n// FINAL OUTPUT FORMAT\n// -------------------------------------------\nreturn [\n  {\n    output: {\n      crm,\n      marketing_tools: marketing\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2192,
+        624
+      ],
+      "id": "795e5471-a10e-4a48-8bd3-42c44b27d8dd",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a23eed9d-8269-4797-9a71-ab78a5131d0d",
+              "name": "marketing_tools1",
+              "value": "={{ $json.detectedCRMs }}",
+              "type": "array"
+            },
+            {
+              "id": "da2bcc92-6b9d-49d7-bcb7-05d285815d36",
+              "name": "marketing_tools2",
+              "value": "={{ $json.detectedEmailTools }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2864,
+        864
+      ],
+      "id": "839f7806-8f64-4995-94d1-71eb62feec9a",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "jsCode": "return[\n  {\n    tools : [],\n  source:'error'\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -3152,
+        672
+      ],
+      "id": "48af20d6-7e9b-4c61-8e87-32f39c95d12d",
+      "name": "Code in JavaScript2"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -2864,
+        528
+      ],
+      "id": "f560f60d-74e9-44f3-bab9-d80b27d1d41f",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ad063ef5-536f-4225-809e-a62f5bcf6ee9",
+              "leftValue": "={{ $json.output.marketing_tools[0] }}",
+              "rightValue": "=Not found on Buildwith",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1920,
+        592
+      ],
+      "id": "b866bfef-c4c6-48a3-92ab-ba7841338fdb",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b07312fa-e0cb-4086-86cb-c165b2f37904",
+              "name": "crm",
+              "value": "={{ $json.output.crm.join(', ') }}",
+              "type": "string"
+            },
+            {
+              "id": "cb619505-a2b7-4335-9fd2-eba59bdc0e1c",
+              "name": "marketing_tools",
+              "value": "={{ $json.output.marketing_tools.join(', ') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1696,
+        688
+      ],
+      "id": "c79ec2e6-1eb4-4991-a6dd-4f8cb38271fb",
+      "name": "Split the data"
+    },
+    {
+      "parameters": {
+        "model": "grok-4-fast-reasoning",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatXAiGrok",
+      "typeVersion": 1,
+      "position": [
+        -3152,
+        496
+      ],
+      "id": "b6e7305f-c261-47d4-bf9c-7d3409268143",
+      "name": "xAI Grok Chat Model",
+      "credentials": {
+        "xAiApi": {
+          "id": "CyGAVC1oTsd2JyU5",
+          "name": "xAi account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "uuid": "7def8727-b482-4a16-889c-5e0bf6b01cb6",
+          "team_name": "Yanet Fraga Maresma PA Broker",
+          "⚠️team_id_⚠️(DONT_USE_THIS!!!)": null,
+          "team_size_count": 1,
+          "brokerage": "My FL Home, LLC.",
+          "state": null,
+          "city": "Miami",
+          "zip_code": null,
+          "source": "Data_Maps_Teams",
+          "size": "Individual",
+          "rank_2025": null,
+          "volume": null,
+          "sides": null,
+          "Website": "https://sef.mlsmatrix.com/Matrix/Public/AWP/yanetfraga",
+          "fello_customer_status": null,
+          "rt_verified_team_main": [
+            "No"
+          ],
+          "team_crm_main": null,
+          "entity": null,
+          "uuid_text": null,
+          "serper_results": null,
+          "ai_website": null,
+          "reasoning": null,
+          "website_url_logo_dev": "https://img.logo.dev/sef.mlsmatrix.com?token=pk_KO3WmZKAT8KkDCUaQ_-q2Q",
+          "rashi_crm": [
+            {
+              "detectedCRMs": [
+                "Not Found"
+              ],
+              "detectedEmailTools": [
+                "Not Found"
+              ]
+            }
+          ],
+          "marketing tools": [
+            ""
+          ]
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Oxylab custom parser",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "get crm",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Oxylab custom parser": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code in JavaScript2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Deduplicate the tools",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge4": {
+      "main": [
+        [
+          {
+            "node": "Aggregate1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate1": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser3": {
+      "ai_outputParser": [
+        []
+      ]
+    },
+    "Deduplicate the tools": {
+      "main": [
+        [
+          {
+            "node": "Information Extractor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser4": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Auto-fixing Output Parser",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get crm": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Auto-fixing Output Parser": {
+      "ai_outputParser": [
+        []
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        []
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "error1": {
+      "main": [
+        []
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "error1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Information Extractor": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "error",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Split the data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split the data": {
+      "main": [
+        [
+          {
+            "node": "Update a row2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "xAI Grok Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Information Extractor",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "all",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "versionId": "8633abc2-955b-447d-8500-0094675d6ad1",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "26fd748c90bc62900feac397bab512f58b7fa27c2654b5e206d337db6f8a6de3"
+  },
+  "id": "6NI5g2UMnIBpUMh8",
+  "tags": []
+}
