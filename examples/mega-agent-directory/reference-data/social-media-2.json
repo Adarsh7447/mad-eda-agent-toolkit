@@ -1,0 +1,455 @@
+{
+  "name": "Social media - 2",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://google.serper.dev/search",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "4094a09649d62bbadc26c8072697637b8e31caf1"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "={{ $json.q }}"
+            },
+            {
+              "name": "gl",
+              "value": "us"
+            },
+            {
+              "name": "num",
+              "value": "15"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        640,
+        32
+      ],
+      "id": "e836a43c-6a25-447d-996d-0a16302681b7",
+      "name": "HTTP Request",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"foundSocials\": {\n    \"facebook\": [],\n    \"instagram\": [],\n    \"linkedin\": [],\n    \"youtube\": [],\n    \"tiktok\": [],\n    \"x\": [],\n    \"zillow\": []\n  },\n  \"score\": 0,\n  \"label\": \"poor\"\n}",
+        "autoFix": true
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        944,
+        256
+      ],
+      "id": "3e17a853-6818-41f2-8d5a-aeaed51b830f",
+      "name": "Structured Output Parser1"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  const fs = item.json.output?.foundSocials || {};\n\n  const cleanedSocials = Object.fromEntries(\n    Object.entries(fs)\n      .filter(([_, arr]) => Array.isArray(arr) && arr.length > 0)\n      .map(([key, arr]) =>\n        arr.length === 1 ? [key, arr[0]] : [key, arr]\n      )\n  );\n\n  // Build unified object\n  const finalOutput = {\n    socials: cleanedSocials,\n    score: item.json.output?.score ?? null,\n    label: item.json.output?.label ?? null\n  };\n\n  // ❗ Return ONLY finalOutput as each item\n  return { json: finalOutput };\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1312,
+        32
+      ],
+      "id": "6ccd41c7-db4e-4909-b0c3-ce7ad9e9411f",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "jsCode": "let parts = [];\nconst input = $input.first().json;\n\n// Inject homepage URL from Webhook\ninput.team_page_url = $('Webhook').first().json.body.homepage_url || \"\";\n\n// Normalize fields\nconst city = Array.isArray(input.city) ? input.city[0] : input.city;\nconst state = Array.isArray(input.state) ? input.state[0] : input.state;\nconst zip = Array.isArray(input.zip_code) ? input.zip_code[0] : input.zip_code;\n\n// --------------------------------------------------\n// CLEAN HOMEPAGE URL → DOMAIN ROOT\n// --------------------------------------------------\nlet cleanedDomain = \"\";\n\nif (input.team_page_url && input.team_page_url.toUpperCase() !== \"NA\") {\n\ttry {\n\t\tlet url = input.team_page_url.trim();\n\n\t\t// Remove http, https, www\n\t\turl = url.replace(/^https?:\\/\\//i, \"\").replace(/^www\\./i, \"\");\n\n\t\t// Get part before slash\n\t\turl = url.split(\"/\")[0];\n\n\t\t// Strip common TLDs\n\t\turl = url.replace(/\\.(com|net|org|team|co|io|us|info|realtor|realestate)$/i, \"\");\n\n\t\tif (url.toUpperCase() !== \"NA\" && url !== \"\") {\n\t\t\tcleanedDomain = url;\n\t\t}\n\t} catch (err) {\n\t\tcleanedDomain = \"\";\n\t}\n}\n\n// --------------------------------------------------\n// PRIORITY LOGIC WITH NA FALLBACK\n// --------------------------------------------------\nif (input.team_name && input.team_name.trim().toUpperCase() !== \"NA\") {\n\tparts.push(input.team_name.trim());\n} else if (cleanedDomain) {\n\tparts.push(cleanedDomain);\n} else if (\n\tinput.first_name && input.last_name && input.brokerage &&\n\tinput.first_name.toUpperCase() !== \"NA\" &&\n\tinput.last_name.toUpperCase() !== \"NA\" &&\n\tinput.brokerage.toUpperCase() !== \"NA\"\n) {\n\tparts.push(`${input.first_name} ${input.last_name} ${input.brokerage}`);\n} else if (\n\tinput.first_name && input.last_name &&\n\tinput.first_name.toUpperCase() !== \"NA\" &&\n\tinput.last_name.toUpperCase() !== \"NA\"\n) {\n\tparts.push(`${input.first_name} ${input.last_name}`);\n}\n\n// --------------------------------------------------\n// Add real-estate relevance keywords\n// --------------------------------------------------\nparts.push(`\"real estate\" OR realtor OR \"real estate team\"`);\n\n// --------------------------------------------------\n// Add location info if not NA\n// --------------------------------------------------\nif (city && city.toUpperCase() !== \"NA\") parts.push(city);\nif (state && state.toUpperCase() !== \"NA\") parts.push(state);\nif (zip && zip.toUpperCase() !== \"NA\") parts.push(zip);\n\n// --------------------------------------------------\n// Add social filters\n// --------------------------------------------------\nparts.push(\n\t\"site:facebook.com OR site:instagram.com OR site:linkedin.com OR site:youtube.com OR site:tiktok.com\"\n);\n\n// --------------------------------------------------\n// Final query\n// --------------------------------------------------\nlet q = parts.join(\" \").replace(/\\s+/g, \" \").trim();\n\nreturn [\n\t{\n\t\tjson: {\n\t\t\tq,\n\t\t\tgl: \"us\",\n\t\t\tnum: 15\n\t\t}\n\t}\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        416,
+        32
+      ],
+      "id": "d9f30611-9916-434a-8e22-020ba2c8eec5",
+      "name": "Build query"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are a data extraction assistant.\nYour task is to read the search results in Input 1 and extract possible social media profile URLs for a real estate team or business.\nYou do not apply strict filtering — collect URLs that appear to be related.\n\nINPUTS\n\nInput 1 (Serper organic results JSON):\n\n{{ JSON.stringify($json.organic, null, 2) }}\n\n\nInput 2 (team or business info):\n\n{{ $('Webhook').item.json.body.source_url }}\n{{ $('Get a row').item.json.city[0] }}\n{{ $('Get a row').item.json.state[0] }}\n{{ $('Get a row').item.json.phone }}\n{{ $('Get a row').item.json.full_address }}\n{{ $('Get a row').item.json.first_name }}\n{{ $('Get a row').item.json.last_name }}\n{{ $('Get a row').item.json.email[0] }}\n\nTASK\n\nExtract URLs that belong to any of these platforms:\n\nfacebook.com\n\ninstagram.com\n\nlinkedin.com\n\nyoutube.com\n\ntiktok.com\n\ntwitter.com or x.com\n\nzillow.com\n\nFor each extracted URL:\n\nNormalize it to only the main profile or page root.\n\nRemove any path segments after the username, page name, or organization handle.\n\nExamples:\n\nhttps://www.facebook.com/corcoranmce/videos/... → www.facebook.com/corcoranmce\n\nhttps://www.instagram.com/corcoranmce/posts/12345 → www.instagram.com/corcoranmce\n\nhttps://linkedin.com/company/corcoran-mce/about → linkedin.com/company/corcoran-mce\n\nRemove all query parameters (?, &, etc.) and trailing slashes.\n\n\nFor each platform, return at most one URL (the first valid match).\nIf no URL is found, return an empty array for that platform.\n\nSCORING\nlet score = 0;\nif (found.facebook.length) score += 2;\nif (found.instagram.length) score += 2;\nif (found.linkedin.length) score += 2;\nif (found.youtube.length) score += 2;\nif (found.tiktok.length) score += 1;\nif (found.x.length) score += 1;\n\n\nThen assign a label:\n\nscore ≥ 6 → \"good\"\n\nscore ≥ 3 → \"medium\"\n\nscore < 3 → \"poor\"\n\nSTRICT OUTPUT RULES\n\nOutput only a valid JSON object with this exact structure:\n\n{\n  \"foundSocials\": {\n    \"facebook\": [],\n    \"instagram\": [],\n    \"linkedin\": [],\n    \"youtube\": [],\n    \"tiktok\": [],\n    \"x\": [],\n    \"zillow\": []\n  },\n  \"score\": 0,\n  \"label\": \"poor\"\n}\n\n\nRules:\n\nAll seven platform keys must exist.\n\nEach value must be an array (empty or with one normalized URL).\n\nscore is a number.\n\nlabel is one of: \"good\", \"medium\", \"poor\".\n\nNo extra text, no markdown, no comments.",
+        "hasOutputParser": true,
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        864,
+        32
+      ],
+      "id": "e172b8b1-3024-4d52-a0a8-87438cf23daa",
+      "name": "Find social media",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "new_unified_agents",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "supabase_uuid",
+              "condition": "eq",
+              "keyValue": "={{ $('Webhook').item.json.body.uuid }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "updated_at",
+              "fieldValue": "={{ $now }}"
+            },
+            {
+              "fieldId": "facebook",
+              "fieldValue": "={{ $json.facebook }}"
+            },
+            {
+              "fieldId": "instagram",
+              "fieldValue": "={{ $json.Instagram }}"
+            },
+            {
+              "fieldId": "tiktok",
+              "fieldValue": "={{ $json.Tiktok }}"
+            },
+            {
+              "fieldId": "linkedin",
+              "fieldValue": "={{ $json.Linkedin }}"
+            },
+            {
+              "fieldId": "youtube",
+              "fieldValue": "={{ $json.Youtube }}"
+            },
+            {
+              "fieldId": "twitter",
+              "fieldValue": "={{ $json.x }}"
+            },
+            {
+              "fieldId": "social_label",
+              "fieldValue": "={{ $json.label }}"
+            },
+            {
+              "fieldId": "social_Score",
+              "fieldValue": "={{ $json.score }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1760,
+        32
+      ],
+      "id": "b3fe421d-9216-4864-b6e5-611a1018a95a",
+      "name": "Update a row",
+      "credentials": {
+        "supabaseApi": {
+          "id": "BfbunFb9qartLI7X",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "new_unified_agents",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "supabase_uuid",
+              "keyValue": "={{ $json.body.uuid }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -32,
+        32
+      ],
+      "id": "6a24dce2-e19b-4a75-b9c2-bc3faaf06524",
+      "name": "Get a row",
+      "credentials": {
+        "supabaseApi": {
+          "id": "BfbunFb9qartLI7X",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "social_media",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -256,
+        32
+      ],
+      "id": "625f6348-8a2f-47d7-b77b-2e7a2db4f448",
+      "name": "Webhook",
+      "webhookId": "e09995b9-4397-4451-9b31-dfa57aa8658e"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        192,
+        32
+      ],
+      "id": "bdd39d51-4bf7-4945-b7c7-46e2f8c2c87b",
+      "name": "Limit"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ed188a13-fe41-43fb-b8d8-9e9b3d071e00",
+              "name": "facebook",
+              "value": "={{ $json.socials.facebook }}",
+              "type": "string"
+            },
+            {
+              "id": "553ec570-0e21-479b-b12e-bb2bc6396763",
+              "name": "Instagram",
+              "value": "={{ $json.socials.instagram }}",
+              "type": "string"
+            },
+            {
+              "id": "d8e94cdb-23fb-40db-9661-8e78af262427",
+              "name": "Tiktok",
+              "value": "={{ $json.socials.tiktok }}",
+              "type": "string"
+            },
+            {
+              "id": "5015112d-49b8-4b3e-a338-1aae1fe8b06a",
+              "name": "Linkedin",
+              "value": "={{ $json.socials.linkedin }}",
+              "type": "string"
+            },
+            {
+              "id": "c842094c-e9ac-465c-a8b4-9e963a08449c",
+              "name": "Youtube",
+              "value": "={{ $json.socials.youtube }}",
+              "type": "string"
+            },
+            {
+              "id": "9b7aeb9a-d91d-4f87-b81a-dc333253dd5a",
+              "name": "x",
+              "value": "={{ $json.socials.x }}",
+              "type": "string"
+            },
+            {
+              "id": "6816f11b-736c-4446-bce6-4e01e9f497c9",
+              "name": "zillow",
+              "value": "={{ $json.socials.zillow }}",
+              "type": "string"
+            },
+            {
+              "id": "c5106611-5d66-4b6e-a371-c977661c40c8",
+              "name": "score",
+              "value": "={{ $json.score }}",
+              "type": "string"
+            },
+            {
+              "id": "15516d0f-33dc-4635-ab54-46f9d6ef52ec",
+              "name": "label",
+              "value": "={{ $json.label }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1536,
+        32
+      ],
+      "id": "1991698f-5bb8-4d7b-8edb-4a8c9aa32266",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "model": "grok-4-1-fast-non-reasoning",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatXAiGrok",
+      "typeVersion": 1,
+      "position": [
+        944,
+        464
+      ],
+      "id": "ceccd221-40b7-4120-9690-0e5394f133a2",
+      "name": "xAI Grok Chat Model",
+      "credentials": {
+        "xAiApi": {
+          "id": "vE0kFwrQ1xeCqJed",
+          "name": "xAi account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Find social media",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Find social media",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build query": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find social media": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a row": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Get a row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Build query",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Update a row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "xAI Grok Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Find social media",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Structured Output Parser1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "all",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "versionId": "76c81643-aecc-4298-8a00-d49dfcd8eba4",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "db6b129dbe8c3f7320f0f0577a34c4ed6c5484f87b4dcb07bed03561cf9abc85"
+  },
+  "id": "O04RrEnWFIv0DLE3",
+  "tags": []
+}
