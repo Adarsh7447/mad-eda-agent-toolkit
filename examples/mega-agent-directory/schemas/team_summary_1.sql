@@ -1,0 +1,22 @@
+create table public."Team_Summary_1" (
+  uuid uuid not null default gen_random_uuid (),
+  team_name text null,
+  team_id text null,
+  team_size_count integer null,
+  brokerage text null,
+  state text null,
+  city text null,
+  zip_code text null,
+  source text null,
+  size text null,
+  rank_2025 smallint null,
+  volume text null,
+  sides real null,
+  "Website" text null,
+  fello_customer_status text null,
+  entity text null,
+  team_crm_main text[] null,
+  uuid_text text null,
+  rt_verified_team_main text[] null,
+  constraint Team_Summary_BHHS_pkey primary key (uuid)
+) TABLESPACE pg_default;
