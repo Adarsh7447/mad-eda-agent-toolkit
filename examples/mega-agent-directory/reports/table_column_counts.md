@@ -1,49 +1,1309 @@
-# Table Column Counts
+# Table Column Null Counts
 
-This report lists the tables defined in the `schemas/` folder and the number of columns found in each table definition.
+This report contains per-column null and not-null counts for tables in the `public` schema.
 
-| Schema File | Table Name | Column Count |
-| --- | --- | ---: |
-| `Team_Summary.sql` | `"Team_Summary"` | 25 |
-| `agens_3.sql` | `agents_3` | 46 |
-| `agent_info_ci.sql` | `agent_info_ci` | 8 |
-| `agents.sql` | `agents` | 46 |
-| `agents_2.sql` | `agents_2` | 43 |
-| `agents_2_duplicate_confidence_table.sql` | `agents_2_duplicate_confidence_table` | 52 |
-| `agents_3_duplicate_confidence_table.sql` | `agents_3_duplicate_confidence_table` | 55 |
-| `agents_4.sql` | `agents_4` | 39 |
-| `agents_4_duplicate_confidence_table.sql` | `agents_4_duplicate_confidence_table` | 56 |
-| `agents_4_hemanth.sql` | `agents_4_hemanth` | 39 |
-| `agents_duplicate_confidence_table.sql` | `agents_duplicate_confidence_table` | 55 |
-| `agents_maps.sql` | `agents_maps` | 44 |
-| `company_info.sql` | `company_info` | 24 |
-| `company_info_team_members.sql` | `"Company Info Team Members"` | 15 |
-| `current_customer_master_list.sql` | `"Current_Customer_Master_List"` | 20 |
-| `data_at_properties.sql` | `"Data_AT_Properties"` | 31 |
-| `data_betterhomes.sql` | `"Data_BetterHomes"` | 11 |
-| `data_bhhs.sql` | `"Data_BHHS"` | 47 |
-| `data_epique.sql` | `"Data_Epique"` | 19 |
-| `data_kw.sql` | `"Data_KW"` | 29 |
-| `data_maps_teams.sql` | `"Data_maps_teams"` | 27 |
-| `data_onereal.sql` | `"Data_OneReal"` | 12 |
-| `data_realtor.sql` | `"Data_Realtor"` | 36 |
-| `data_remax.sql` | `"Data_Remax"` | 25 |
-| `fello_customer_churn_status.sql` | `"Fello_Customer_Churn_Status"` | 21 |
-| `fello_customer_status.sql` | `"Fello_Customer_Status"` | 21 |
-| `mad_dashboard.sql` | `mad_dashboard` | 28 |
-| `new_unified_agents.sql` | `new_unified_agents` | 86 |
-| `only_agents_1.sql` | `only_agents_1` | 37 |
-| `only_agents_1_duplicate.sql` | `only_agents_1_duplicate` | 37 |
-| `only_agents_2.sql` | `only_agents_2` | 37 |
-| `only_agents_3.sql` | `only_agents_3` | 37 |
-| `only_agents_4.sql` | `only_agents_4` | 37 |
-| `only_agents_5.sql` | `only_agents_5` | 37 |
-| `only_agents_6.sql` | `only_agents_6` | 37 |
-| `team_summary_1.sql` | `"Team_Summary_1"` | 19 |
-| `team_summary_2.sql` | `"Team_Summary_2"` | 24 |
-| `wsj_real_trends_teams_large.sql` | `wsj_real_trends_teams_large` | 10 |
-| `wsj_real_trends_teams_medium.sql` | `wsj_real_trends_teams_medium` | 9 |
-| `wsj_real_trends_teams_mega.sql` | `wsj_real_trends_teams_mega` | 13 |
-| `wsj_real_trends_teams_small.sql` | `wsj_real_trends_teams_small` | 9 |
-
-**Total tables:** 41
+| Table Schema | Table Name | Column Name | Total Count | Null Count | Not Null Count | Null Percentage |
+| --- | --- | --- | ---: | ---: | ---: | ---: |
+| public       | agent_info_ci                       | id                             | 21416268    | 0          | 21416268       | 0.00            |
+| public       | agent_info_ci                       | agent_uuid                     | 21416268    | 0          | 21416268       | 0.00            |
+| public       | agent_info_ci                       | team_id                        | 21416268    | 0          | 21416268       | 0.00            |
+| public       | agent_info_ci                       | agent_name                     | 21416268    | 0          | 21416268       | 0.00            |
+| public       | agent_info_ci                       | phone                          | 21416268    | 142347     | 21273921       | 0.66            |
+| public       | agent_info_ci                       | designation                    | 21416268    | 1652434    | 19763834       | 7.72            |
+| public       | agent_info_ci                       | raw_json                       | 21416268    | 0          | 21416268       | 0.00            |
+| public       | agent_info_ci                       | created_at                     | 21416268    | 0          | 21416268       | 0.00            |
+| public       | agents                              | id                             | 16292       | 0          | 16292          | 0.00            |
+| public       | agents                              | list_name                      | 16292       | 1          | 16291          | 0.01            |
+| public       | agents                              | list_company                   | 16292       | 0          | 16292          | 0.00            |
+| public       | agents                              | list_location                  | 16292       | 0          | 16292          | 0.00            |
+| public       | agents                              | full_name_zw                   | 16292       | 2052       | 14240          | 12.60           |
+| public       | agents                              | agent_designation_zw           | 16292       | 5605       | 10687          | 34.40           |
+| public       | agents                              | team_name_zw                   | 16292       | 5514       | 10778          | 33.84           |
+| public       | agents                              | about_agent_zw                 | 16292       | 2971       | 13321          | 18.24           |
+| public       | agents                              | agent_address_zw               | 16292       | 3847       | 12445          | 23.61           |
+| public       | agents                              | address_url_zw                 | 16292       | 13969      | 2323           | 85.74           |
+| public       | agents                              | agent_email_zw                 | 16292       | 2454       | 13838          | 15.06           |
+| public       | agents                              | personal_email                 | 16292       | 12463      | 3829           | 76.50           |
+| public       | agents                              | agent_phone_numbers_zw         | 16292       | 1921       | 14371          | 11.79           |
+| public       | agents                              | zillow_profile_url_zw          | 16292       | 1757       | 14535          | 10.78           |
+| public       | agents                              | sales_last_12_months_zw        | 16292       | 2120       | 14172          | 13.01           |
+| public       | agents                              | total_sales_zw                 | 16292       | 4458       | 11834          | 27.36           |
+| public       | agents                              | average_price_zw               | 16292       | 6333       | 9959           | 38.87           |
+| public       | agents                              | price_range_zw                 | 16292       | 5979       | 10313          | 36.70           |
+| public       | agents                              | website_zw                     | 16292       | 6945       | 9347           | 42.63           |
+| public       | agents                              | linkedin_url_zw                | 16292       | 11725      | 4567           | 71.97           |
+| public       | agents                              | facebook_url_zw                | 16292       | 9230       | 7062           | 56.65           |
+| public       | agents                              | instagram_url_zw               | 16292       | 14685      | 1607           | 90.14           |
+| public       | agents                              | twitter_url_zw                 | 16292       | 14493      | 1799           | 88.96           |
+| public       | agents                              | youtube_url_zw                 | 16292       | 15692      | 600            | 96.32           |
+| public       | agents                              | tiktok_url_zw                  | 16292       | 15980      | 312            | 98.08           |
+| public       | agents                              | other_socials_zw               | 16292       | 16208      | 84             | 99.48           |
+| public       | agents                              | brokerage_name                 | 16292       | 756        | 15536          | 4.64            |
+| public       | agents                              | transaction_zipcodes           | 16292       | 16292      | 0              | 100.00          |
+| public       | agents                              | license_id                     | 16292       | 16292      | 0              | 100.00          |
+| public       | agents                              | industry                       | 16292       | 13377      | 2915           | 82.11           |
+| public       | agents                              | fello_customer_status          | 16292       | 16292      | 0              | 100.00          |
+| public       | agents                              | date_of_churn                  | 16292       | 16292      | 0              | 100.00          |
+| public       | agents                              | is_marketing_contact           | 16292       | 16292      | 0              | 100.00          |
+| public       | agents                              | created_at                     | 16292       | 0          | 16292          | 0.00            |
+| public       | agents                              | updated_at                     | 16292       | 0          | 16292          | 0.00            |
+| public       | agents                              | team_id                        | 16292       | 0          | 16292          | 0.00            |
+| public       | agents                              | normalized_full_name           | 16292       | 13505      | 2787           | 82.89           |
+| public       | agents                              | normalized_email               | 16292       | 13505      | 2787           | 82.89           |
+| public       | agents                              | normalized_phone               | 16292       | 13505      | 2787           | 82.89           |
+| public       | agents                              | normalized_license_number      | 16292       | 13505      | 2787           | 82.89           |
+| public       | agents                              | deduplication_key              | 16292       | 13505      | 2787           | 82.89           |
+| public       | agents                              | aryan_medium                   | 16292       | 2787       | 13505          | 17.11           |
+| public       | agents                              | zillow_pro_or_not              | 16292       | 4965       | 11327          | 30.48           |
+| public       | agents                              | Zillow_Review                  | 16292       | 11150      | 5142           | 68.44           |
+| public       | agents                              | Zillow_review_count            | 16292       | 11151      | 5141           | 68.44           |
+| public       | agents                              | id_text                        | 16292       | 0          | 16292          | 0.00            |
+| public       | agents_2                            | id                             | 6893        | 0          | 6893           | 0.00            |
+| public       | agents_2                            | list_name                      | 6893        | 0          | 6893           | 0.00            |
+| public       | agents_2                            | list_company                   | 6893        | 0          | 6893           | 0.00            |
+| public       | agents_2                            | list_location                  | 6893        | 4416       | 2477           | 64.06           |
+| public       | agents_2                            | full_name_zw                   | 6893        | 451        | 6442           | 6.54            |
+| public       | agents_2                            | agent_designation_zw           | 6893        | 0          | 6893           | 0.00            |
+| public       | agents_2                            | team_name_zw                   | 6893        | 1334       | 5559           | 19.35           |
+| public       | agents_2                            | about_agent_zw                 | 6893        | 11         | 6882           | 0.16            |
+| public       | agents_2                            | agent_address_zw               | 6893        | 998        | 5895           | 14.48           |
+| public       | agents_2                            | address_url_zw                 | 6893        | 1011       | 5882           | 14.67           |
+| public       | agents_2                            | agent_email_zw                 | 6893        | 445        | 6448           | 6.46            |
+| public       | agents_2                            | personal_email                 | 6893        | 6893       | 0              | 100.00          |
+| public       | agents_2                            | agent_phone_numbers_zw         | 6893        | 0          | 6893           | 0.00            |
+| public       | agents_2                            | zillow_profile_url_zw          | 6893        | 129        | 6764           | 1.87            |
+| public       | agents_2                            | sales_last_12_months_zw        | 6893        | 409        | 6484           | 5.93            |
+| public       | agents_2                            | total_sales_zw                 | 6893        | 409        | 6484           | 5.93            |
+| public       | agents_2                            | average_price_zw               | 6893        | 590        | 6303           | 8.56            |
+| public       | agents_2                            | price_range_zw                 | 6893        | 409        | 6484           | 5.93            |
+| public       | agents_2                            | website_zw                     | 6893        | 2891       | 4002           | 41.94           |
+| public       | agents_2                            | linkedin_url_zw                | 6893        | 5066       | 1827           | 73.49           |
+| public       | agents_2                            | facebook_url_zw                | 6893        | 3901       | 2992           | 56.59           |
+| public       | agents_2                            | instagram_url_zw               | 6893        | 6166       | 727            | 89.45           |
+| public       | agents_2                            | twitter_url_zw                 | 6893        | 6231       | 662            | 90.40           |
+| public       | agents_2                            | youtube_url_zw                 | 6893        | 6642       | 251            | 96.36           |
+| public       | agents_2                            | tiktok_url_zw                  | 6893        | 6754       | 139            | 97.98           |
+| public       | agents_2                            | other_socials_zw               | 6893        | 6841       | 52             | 99.25           |
+| public       | agents_2                            | brokerage_name                 | 6893        | 436        | 6457           | 6.33            |
+| public       | agents_2                            | transaction_zipcodes           | 6893        | 6893       | 0              | 100.00          |
+| public       | agents_2                            | license_id                     | 6893        | 6893       | 0              | 100.00          |
+| public       | agents_2                            | industry                       | 6893        | 0          | 6893           | 0.00            |
+| public       | agents_2                            | fello_customer_status          | 6893        | 6893       | 0              | 100.00          |
+| public       | agents_2                            | date_of_churn                  | 6893        | 6893       | 0              | 100.00          |
+| public       | agents_2                            | is_marketing_contact           | 6893        | 6893       | 0              | 100.00          |
+| public       | agents_2                            | created_at                     | 6893        | 0          | 6893           | 0.00            |
+| public       | agents_2                            | updated_at                     | 6893        | 0          | 6893           | 0.00            |
+| public       | agents_2                            | team_id                        | 6893        | 0          | 6893           | 0.00            |
+| public       | agents_2                            | normalized_full_name           | 6893        | 483        | 6410           | 7.01            |
+| public       | agents_2                            | normalized_email               | 6893        | 483        | 6410           | 7.01            |
+| public       | agents_2                            | normalized_phone               | 6893        | 483        | 6410           | 7.01            |
+| public       | agents_2                            | normalized_license_number      | 6893        | 483        | 6410           | 7.01            |
+| public       | agents_2                            | deduplication_key              | 6893        | 483        | 6410           | 7.01            |
+| public       | agents_2                            | aryan_107_teams_agents         | 6893        | 6410       | 483            | 92.99           |
+| public       | agents_2                            | id_text                        | 6893        | 0          | 6893           | 0.00            |
+| public       | agents_2_duplicate_confidence_table | id                             | 6893        | 0          | 6893           | 0.00            |
+| public       | agents_2_duplicate_confidence_table | list_name                      | 6893        | 0          | 6893           | 0.00            |
+| public       | agents_2_duplicate_confidence_table | list_company                   | 6893        | 0          | 6893           | 0.00            |
+| public       | agents_2_duplicate_confidence_table | list_location                  | 6893        | 4416       | 2477           | 64.06           |
+| public       | agents_2_duplicate_confidence_table | full_name_zw                   | 6893        | 451        | 6442           | 6.54            |
+| public       | agents_2_duplicate_confidence_table | agent_designation_zw           | 6893        | 0          | 6893           | 0.00            |
+| public       | agents_2_duplicate_confidence_table | team_name_zw                   | 6893        | 1334       | 5559           | 19.35           |
+| public       | agents_2_duplicate_confidence_table | about_agent_zw                 | 6893        | 11         | 6882           | 0.16            |
+| public       | agents_2_duplicate_confidence_table | agent_address_zw               | 6893        | 998        | 5895           | 14.48           |
+| public       | agents_2_duplicate_confidence_table | address_url_zw                 | 6893        | 1011       | 5882           | 14.67           |
+| public       | agents_2_duplicate_confidence_table | agent_email_zw                 | 6893        | 445        | 6448           | 6.46            |
+| public       | agents_2_duplicate_confidence_table | personal_email                 | 6893        | 6893       | 0              | 100.00          |
+| public       | agents_2_duplicate_confidence_table | agent_phone_numbers_zw         | 6893        | 0          | 6893           | 0.00            |
+| public       | agents_2_duplicate_confidence_table | zillow_profile_url_zw          | 6893        | 129        | 6764           | 1.87            |
+| public       | agents_2_duplicate_confidence_table | sales_last_12_months_zw        | 6893        | 409        | 6484           | 5.93            |
+| public       | agents_2_duplicate_confidence_table | total_sales_zw                 | 6893        | 409        | 6484           | 5.93            |
+| public       | agents_2_duplicate_confidence_table | average_price_zw               | 6893        | 590        | 6303           | 8.56            |
+| public       | agents_2_duplicate_confidence_table | price_range_zw                 | 6893        | 409        | 6484           | 5.93            |
+| public       | agents_2_duplicate_confidence_table | website_zw                     | 6893        | 2891       | 4002           | 41.94           |
+| public       | agents_2_duplicate_confidence_table | linkedin_url_zw                | 6893        | 5066       | 1827           | 73.49           |
+| public       | agents_2_duplicate_confidence_table | facebook_url_zw                | 6893        | 3901       | 2992           | 56.59           |
+| public       | agents_2_duplicate_confidence_table | instagram_url_zw               | 6893        | 6166       | 727            | 89.45           |
+| public       | agents_2_duplicate_confidence_table | twitter_url_zw                 | 6893        | 6231       | 662            | 90.40           |
+| public       | agents_2_duplicate_confidence_table | youtube_url_zw                 | 6893        | 6642       | 251            | 96.36           |
+| public       | agents_2_duplicate_confidence_table | tiktok_url_zw                  | 6893        | 6754       | 139            | 97.98           |
+| public       | agents_2_duplicate_confidence_table | other_socials_zw               | 6893        | 6841       | 52             | 99.25           |
+| public       | agents_2_duplicate_confidence_table | brokerage_name                 | 6893        | 436        | 6457           | 6.33            |
+| public       | agents_2_duplicate_confidence_table | transaction_zipcodes           | 6893        | 6893       | 0              | 100.00          |
+| public       | agents_2_duplicate_confidence_table | license_id                     | 6893        | 6893       | 0              | 100.00          |
+| public       | agents_2_duplicate_confidence_table | industry                       | 6893        | 0          | 6893           | 0.00            |
+| public       | agents_2_duplicate_confidence_table | fello_customer_status          | 6893        | 6893       | 0              | 100.00          |
+| public       | agents_2_duplicate_confidence_table | date_of_churn                  | 6893        | 6893       | 0              | 100.00          |
+| public       | agents_2_duplicate_confidence_table | is_marketing_contact           | 6893        | 6893       | 0              | 100.00          |
+| public       | agents_2_duplicate_confidence_table | created_at                     | 6893        | 0          | 6893           | 0.00            |
+| public       | agents_2_duplicate_confidence_table | updated_at                     | 6893        | 0          | 6893           | 0.00            |
+| public       | agents_2_duplicate_confidence_table | team_id                        | 6893        | 0          | 6893           | 0.00            |
+| public       | agents_2_duplicate_confidence_table | normalized_full_name           | 6893        | 483        | 6410           | 7.01            |
+| public       | agents_2_duplicate_confidence_table | normalized_email               | 6893        | 483        | 6410           | 7.01            |
+| public       | agents_2_duplicate_confidence_table | normalized_phone               | 6893        | 483        | 6410           | 7.01            |
+| public       | agents_2_duplicate_confidence_table | normalized_license_number      | 6893        | 483        | 6410           | 7.01            |
+| public       | agents_2_duplicate_confidence_table | deduplication_key              | 6893        | 483        | 6410           | 7.01            |
+| public       | agents_2_duplicate_confidence_table | Company-Team match             | 6893        | 0          | 6893           | 0.00            |
+| public       | agents_2_duplicate_confidence_table | Company-Designation match      | 6893        | 0          | 6893           | 0.00            |
+| public       | agents_2_duplicate_confidence_table | Company-Website match          | 6893        | 0          | 6893           | 0.00            |
+| public       | agents_2_duplicate_confidence_table | Company-Email match            | 6893        | 0          | 6893           | 0.00            |
+| public       | agents_2_duplicate_confidence_table | Name match                     | 6893        | 0          | 6893           | 0.00            |
+| public       | agents_2_duplicate_confidence_table | Brokerage-Team match           | 6893        | 0          | 6893           | 0.00            |
+| public       | agents_2_duplicate_confidence_table | Brokerage-Designation match    | 6893        | 0          | 6893           | 0.00            |
+| public       | agents_2_duplicate_confidence_table | Brokerage-Website match        | 6893        | 0          | 6893           | 0.00            |
+| public       | agents_2_duplicate_confidence_table | Brokerage-Email match          | 6893        | 0          | 6893           | 0.00            |
+| public       | agents_2_duplicate_confidence_table | Match Verdict                  | 6893        | 0          | 6893           | 0.00            |
+| public       | agents_2_duplicate_confidence_table | aryan_107_teams_agents         | 6893        | 6410       | 483            | 92.99           |
+| public       | agents_3                            | id                             | 11299       | 0          | 11299          | 0.00            |
+| public       | agents_3                            | list_name                      | 11299       | 1          | 11298          | 0.01            |
+| public       | agents_3                            | list_company                   | 11299       | 0          | 11299          | 0.00            |
+| public       | agents_3                            | list_location                  | 11299       | 5979       | 5320           | 52.92           |
+| public       | agents_3                            | full_name_zw                   | 11299       | 1433       | 9866           | 12.68           |
+| public       | agents_3                            | agent_designation_zw           | 11299       | 2083       | 9216           | 18.44           |
+| public       | agents_3                            | team_name_zw                   | 11299       | 3292       | 8007           | 29.14           |
+| public       | agents_3                            | about_agent_zw                 | 11299       | 1723       | 9576           | 15.25           |
+| public       | agents_3                            | agent_address_zw               | 11299       | 2416       | 8883           | 21.38           |
+| public       | agents_3                            | address_url_zw                 | 11299       | 6564       | 4735           | 58.09           |
+| public       | agents_3                            | agent_email_zw                 | 11299       | 1677       | 9622           | 14.84           |
+| public       | agents_3                            | personal_email                 | 11299       | 8086       | 3213           | 71.56           |
+| public       | agents_3                            | agent_phone_numbers_zw         | 11299       | 854        | 10445          | 7.56            |
+| public       | agents_3                            | zillow_profile_url_zw          | 11299       | 901        | 10398          | 7.97            |
+| public       | agents_3                            | sales_last_12_months_zw        | 11299       | 1424       | 9875           | 12.60           |
+| public       | agents_3                            | total_sales_zw                 | 11299       | 2252       | 9047           | 19.93           |
+| public       | agents_3                            | average_price_zw               | 11299       | 3031       | 8268           | 26.83           |
+| public       | agents_3                            | price_range_zw                 | 11299       | 2828       | 8471           | 25.03           |
+| public       | agents_3                            | website_zw                     | 11299       | 5441       | 5858           | 48.15           |
+| public       | agents_3                            | linkedin_url_zw                | 11299       | 8616       | 2683           | 76.25           |
+| public       | agents_3                            | facebook_url_zw                | 11299       | 6919       | 4380           | 61.24           |
+| public       | agents_3                            | instagram_url_zw               | 11299       | 10182      | 1117           | 90.11           |
+| public       | agents_3                            | twitter_url_zw                 | 11299       | 10356      | 943            | 91.65           |
+| public       | agents_3                            | youtube_url_zw                 | 11299       | 10904      | 395            | 96.50           |
+| public       | agents_3                            | tiktok_url_zw                  | 11299       | 11111      | 188            | 98.34           |
+| public       | agents_3                            | other_socials_zw               | 11299       | 11249      | 50             | 99.56           |
+| public       | agents_3                            | brokerage_name                 | 11299       | 644        | 10655          | 5.70            |
+| public       | agents_3                            | transaction_zipcodes           | 11299       | 11299      | 0              | 100.00          |
+| public       | agents_3                            | license_id                     | 11299       | 11299      | 0              | 100.00          |
+| public       | agents_3                            | industry                       | 11299       | 5361       | 5938           | 47.45           |
+| public       | agents_3                            | fello_customer_status          | 11299       | 11299      | 0              | 100.00          |
+| public       | agents_3                            | date_of_churn                  | 11299       | 11299      | 0              | 100.00          |
+| public       | agents_3                            | is_marketing_contact           | 11299       | 11299      | 0              | 100.00          |
+| public       | agents_3                            | created_at                     | 11299       | 571        | 10728          | 5.05            |
+| public       | agents_3                            | updated_at                     | 11299       | 0          | 11299          | 0.00            |
+| public       | agents_3                            | team_id                        | 11299       | 0          | 11299          | 0.00            |
+| public       | agents_3                            | normalized_full_name           | 11299       | 10154      | 1145           | 89.87           |
+| public       | agents_3                            | normalized_email               | 11299       | 10221      | 1078           | 90.46           |
+| public       | agents_3                            | normalized_phone               | 11299       | 10154      | 1145           | 89.87           |
+| public       | agents_3                            | normalized_license_number      | 11299       | 11299      | 0              | 100.00          |
+| public       | agents_3                            | deduplication_key              | 11299       | 10154      | 1145           | 89.87           |
+| public       | agents_3                            | aryan_600_teams_agents         | 11299       | 1145       | 10154          | 10.13           |
+| public       | agents_3                            | zillow_pro_or_not              | 11299       | 6856       | 4443           | 60.68           |
+| public       | agents_3                            | Zillow_Review                  | 11299       | 8993       | 2306           | 79.59           |
+| public       | agents_3                            | Zillow_review_count            | 11299       | 8993       | 2306           | 79.59           |
+| public       | agents_3                            | id_text                        | 11299       | 0          | 11299          | 0.00            |
+| public       | agents_3_duplicate_confidence_table | id                             | 11299       | 0          | 11299          | 0.00            |
+| public       | agents_3_duplicate_confidence_table | list_name                      | 11299       | 1          | 11298          | 0.01            |
+| public       | agents_3_duplicate_confidence_table | list_company                   | 11299       | 0          | 11299          | 0.00            |
+| public       | agents_3_duplicate_confidence_table | list_location                  | 11299       | 5979       | 5320           | 52.92           |
+| public       | agents_3_duplicate_confidence_table | full_name_zw                   | 11299       | 1436       | 9863           | 12.71           |
+| public       | agents_3_duplicate_confidence_table | agent_designation_zw           | 11299       | 2091       | 9208           | 18.51           |
+| public       | agents_3_duplicate_confidence_table | team_name_zw                   | 11299       | 3300       | 7999           | 29.21           |
+| public       | agents_3_duplicate_confidence_table | about_agent_zw                 | 11299       | 1723       | 9576           | 15.25           |
+| public       | agents_3_duplicate_confidence_table | agent_address_zw               | 11299       | 2418       | 8881           | 21.40           |
+| public       | agents_3_duplicate_confidence_table | address_url_zw                 | 11299       | 6565       | 4734           | 58.10           |
+| public       | agents_3_duplicate_confidence_table | agent_email_zw                 | 11299       | 1679       | 9620           | 14.86           |
+| public       | agents_3_duplicate_confidence_table | personal_email                 | 11299       | 8086       | 3213           | 71.56           |
+| public       | agents_3_duplicate_confidence_table | agent_phone_numbers_zw         | 11299       | 862        | 10437          | 7.63            |
+| public       | agents_3_duplicate_confidence_table | zillow_profile_url_zw          | 11299       | 908        | 10391          | 8.04            |
+| public       | agents_3_duplicate_confidence_table | sales_last_12_months_zw        | 11299       | 1427       | 9872           | 12.63           |
+| public       | agents_3_duplicate_confidence_table | total_sales_zw                 | 11299       | 2255       | 9044           | 19.96           |
+| public       | agents_3_duplicate_confidence_table | average_price_zw               | 11299       | 3034       | 8265           | 26.85           |
+| public       | agents_3_duplicate_confidence_table | price_range_zw                 | 11299       | 2831       | 8468           | 25.06           |
+| public       | agents_3_duplicate_confidence_table | website_zw                     | 11299       | 5441       | 5858           | 48.15           |
+| public       | agents_3_duplicate_confidence_table | linkedin_url_zw                | 11299       | 8616       | 2683           | 76.25           |
+| public       | agents_3_duplicate_confidence_table | facebook_url_zw                | 11299       | 6919       | 4380           | 61.24           |
+| public       | agents_3_duplicate_confidence_table | instagram_url_zw               | 11299       | 10182      | 1117           | 90.11           |
+| public       | agents_3_duplicate_confidence_table | twitter_url_zw                 | 11299       | 10356      | 943            | 91.65           |
+| public       | agents_3_duplicate_confidence_table | youtube_url_zw                 | 11299       | 10904      | 395            | 96.50           |
+| public       | agents_3_duplicate_confidence_table | tiktok_url_zw                  | 11299       | 11111      | 188            | 98.34           |
+| public       | agents_3_duplicate_confidence_table | other_socials_zw               | 11299       | 11249      | 50             | 99.56           |
+| public       | agents_3_duplicate_confidence_table | brokerage_name                 | 11299       | 644        | 10655          | 5.70            |
+| public       | agents_3_duplicate_confidence_table | transaction_zipcodes           | 11299       | 11299      | 0              | 100.00          |
+| public       | agents_3_duplicate_confidence_table | license_id                     | 11299       | 11299      | 0              | 100.00          |
+| public       | agents_3_duplicate_confidence_table | industry                       | 11299       | 5369       | 5930           | 47.52           |
+| public       | agents_3_duplicate_confidence_table | fello_customer_status          | 11299       | 11299      | 0              | 100.00          |
+| public       | agents_3_duplicate_confidence_table | date_of_churn                  | 11299       | 11299      | 0              | 100.00          |
+| public       | agents_3_duplicate_confidence_table | is_marketing_contact           | 11299       | 11299      | 0              | 100.00          |
+| public       | agents_3_duplicate_confidence_table | created_at                     | 11299       | 579        | 10720          | 5.12            |
+| public       | agents_3_duplicate_confidence_table | updated_at                     | 11299       | 0          | 11299          | 0.00            |
+| public       | agents_3_duplicate_confidence_table | team_id                        | 11299       | 0          | 11299          | 0.00            |
+| public       | agents_3_duplicate_confidence_table | normalized_full_name           | 11299       | 4252       | 7047           | 37.63           |
+| public       | agents_3_duplicate_confidence_table | normalized_email               | 11299       | 4319       | 6980           | 38.22           |
+| public       | agents_3_duplicate_confidence_table | normalized_phone               | 11299       | 4259       | 7040           | 37.69           |
+| public       | agents_3_duplicate_confidence_table | normalized_license_number      | 11299       | 11299      | 0              | 100.00          |
+| public       | agents_3_duplicate_confidence_table | deduplication_key              | 11299       | 10154      | 1145           | 89.87           |
+| public       | agents_3_duplicate_confidence_table | Name match                     | 11299       | 0          | 11299          | 0.00            |
+| public       | agents_3_duplicate_confidence_table | Company-Team match             | 11299       | 0          | 11299          | 0.00            |
+| public       | agents_3_duplicate_confidence_table | Company-Designation match      | 11299       | 0          | 11299          | 0.00            |
+| public       | agents_3_duplicate_confidence_table | Company-Website match          | 11299       | 0          | 11299          | 0.00            |
+| public       | agents_3_duplicate_confidence_table | Company-Email match            | 11299       | 0          | 11299          | 0.00            |
+| public       | agents_3_duplicate_confidence_table | Brokerage-Team match           | 11299       | 0          | 11299          | 0.00            |
+| public       | agents_3_duplicate_confidence_table | Brokerage-Designation match    | 11299       | 0          | 11299          | 0.00            |
+| public       | agents_3_duplicate_confidence_table | Brokerage-Website match        | 11299       | 0          | 11299          | 0.00            |
+| public       | agents_3_duplicate_confidence_table | Brokerage-Email match          | 11299       | 0          | 11299          | 0.00            |
+| public       | agents_3_duplicate_confidence_table | Match Verdict                  | 11299       | 0          | 11299          | 0.00            |
+| public       | agents_3_duplicate_confidence_table | aryan_600_teams_agents         | 11299       | 1145       | 10154          | 10.13           |
+| public       | agents_3_duplicate_confidence_table | zillow_pro_or_not              | 11299       | 6856       | 4443           | 60.68           |
+| public       | agents_3_duplicate_confidence_table | Zillow_Review                  | 11299       | 8993       | 2306           | 79.59           |
+| public       | agents_3_duplicate_confidence_table | Zillow_review_count            | 11299       | 8993       | 2306           | 79.59           |
+| public       | agents_4                            | id                             | 43296       | 0          | 43296          | 0.00            |
+| public       | agents_4                            | list_name                      | 43296       | 1          | 43295          | 0.00            |
+| public       | agents_4                            | list_company                   | 43296       | 0          | 43296          | 0.00            |
+| public       | agents_4                            | list_location                  | 43296       | 43296      | 0              | 100.00          |
+| public       | agents_4                            | full_name_zw                   | 43296       | 9188       | 34108          | 21.22           |
+| public       | agents_4                            | agent_designation_zw           | 43296       | 31846      | 11450          | 73.55           |
+| public       | agents_4                            | team_name_zw                   | 43296       | 30297      | 12999          | 69.98           |
+| public       | agents_4                            | about_agent_zw                 | 43296       | 25174      | 18122          | 58.14           |
+| public       | agents_4                            | agent_address_zw               | 43296       | 26877      | 16419          | 62.08           |
+| public       | agents_4                            | address_url_zw                 | 43296       | 43296      | 0              | 100.00          |
+| public       | agents_4                            | agent_email_zw                 | 43296       | 10075      | 33221          | 23.27           |
+| public       | agents_4                            | personal_email                 | 43296       | 32275      | 11021          | 74.54           |
+| public       | agents_4                            | agent_phone_numbers_zw         | 43296       | 9349       | 33947          | 21.59           |
+| public       | agents_4                            | zillow_profile_url_zw          | 43296       | 8930       | 34366          | 20.63           |
+| public       | agents_4                            | sales_last_12_months_zw        | 43296       | 11313      | 31983          | 26.13           |
+| public       | agents_4                            | total_sales_zw                 | 43296       | 14709      | 28587          | 33.97           |
+| public       | agents_4                            | average_price_zw               | 43296       | 20302      | 22994          | 46.89           |
+| public       | agents_4                            | price_range_zw                 | 43296       | 14396      | 28900          | 33.25           |
+| public       | agents_4                            | website_zw                     | 43296       | 30216      | 13080          | 69.79           |
+| public       | agents_4                            | linkedin_url_zw                | 43296       | 37017      | 6279           | 85.50           |
+| public       | agents_4                            | facebook_url_zw                | 43296       | 33543      | 9753           | 77.47           |
+| public       | agents_4                            | instagram_url_zw               | 43296       | 41278      | 2018           | 95.34           |
+| public       | agents_4                            | twitter_url_zw                 | 43296       | 40770      | 2526           | 94.17           |
+| public       | agents_4                            | youtube_url_zw                 | 43296       | 42521      | 775            | 98.21           |
+| public       | agents_4                            | tiktok_url_zw                  | 43296       | 43001      | 295            | 99.32           |
+| public       | agents_4                            | other_socials_zw               | 43296       | 43206      | 90             | 99.79           |
+| public       | agents_4                            | brokerage_name                 | 43296       | 984        | 42312          | 2.27            |
+| public       | agents_4                            | transaction_zipcodes           | 43296       | 43296      | 0              | 100.00          |
+| public       | agents_4                            | license_id                     | 43296       | 43296      | 0              | 100.00          |
+| public       | agents_4                            | industry                       | 43296       | 43296      | 0              | 100.00          |
+| public       | agents_4                            | fello_customer_status          | 43296       | 43296      | 0              | 100.00          |
+| public       | agents_4                            | date_of_churn                  | 43296       | 43296      | 0              | 100.00          |
+| public       | agents_4                            | is_marketing_contact           | 43296       | 43296      | 0              | 100.00          |
+| public       | agents_4                            | created_at                     | 43296       | 0          | 43296          | 0.00            |
+| public       | agents_4                            | updated_at                     | 43296       | 0          | 43296          | 0.00            |
+| public       | agents_4                            | team_id                        | 43296       | 0          | 43296          | 0.00            |
+| public       | agents_4                            | Zillow_Review                  | 43296       | 35056      | 8240           | 80.97           |
+| public       | agents_4                            | Zillow_review_count            | 43296       | 35062      | 8234           | 80.98           |
+| public       | agents_4                            | designation                    | 43296       | 11509      | 31787          | 26.58           |
+| public       | agents_4_duplicate_confidence_table | id                             | 43296       | 0          | 43296          | 0.00            |
+| public       | agents_4_duplicate_confidence_table | list_name                      | 43296       | 1          | 43295          | 0.00            |
+| public       | agents_4_duplicate_confidence_table | list_company                   | 43296       | 0          | 43296          | 0.00            |
+| public       | agents_4_duplicate_confidence_table | list_location                  | 43296       | 43296      | 0              | 100.00          |
+| public       | agents_4_duplicate_confidence_table | full_name_zw                   | 43296       | 9188       | 34108          | 21.22           |
+| public       | agents_4_duplicate_confidence_table | agent_designation_zw           | 43296       | 31846      | 11450          | 73.55           |
+| public       | agents_4_duplicate_confidence_table | team_name_zw                   | 43296       | 30297      | 12999          | 69.98           |
+| public       | agents_4_duplicate_confidence_table | about_agent_zw                 | 43296       | 25174      | 18122          | 58.14           |
+| public       | agents_4_duplicate_confidence_table | agent_address_zw               | 43296       | 26877      | 16419          | 62.08           |
+| public       | agents_4_duplicate_confidence_table | address_url_zw                 | 43296       | 43296      | 0              | 100.00          |
+| public       | agents_4_duplicate_confidence_table | agent_email_zw                 | 43296       | 10075      | 33221          | 23.27           |
+| public       | agents_4_duplicate_confidence_table | personal_email                 | 43296       | 32275      | 11021          | 74.54           |
+| public       | agents_4_duplicate_confidence_table | agent_phone_numbers_zw         | 43296       | 9349       | 33947          | 21.59           |
+| public       | agents_4_duplicate_confidence_table | zillow_profile_url_zw          | 43296       | 8930       | 34366          | 20.63           |
+| public       | agents_4_duplicate_confidence_table | sales_last_12_months_zw        | 43296       | 11313      | 31983          | 26.13           |
+| public       | agents_4_duplicate_confidence_table | total_sales_zw                 | 43296       | 14709      | 28587          | 33.97           |
+| public       | agents_4_duplicate_confidence_table | average_price_zw               | 43296       | 20302      | 22994          | 46.89           |
+| public       | agents_4_duplicate_confidence_table | price_range_zw                 | 43296       | 14396      | 28900          | 33.25           |
+| public       | agents_4_duplicate_confidence_table | website_zw                     | 43296       | 30216      | 13080          | 69.79           |
+| public       | agents_4_duplicate_confidence_table | linkedin_url_zw                | 43296       | 37017      | 6279           | 85.50           |
+| public       | agents_4_duplicate_confidence_table | facebook_url_zw                | 43296       | 33543      | 9753           | 77.47           |
+| public       | agents_4_duplicate_confidence_table | instagram_url_zw               | 43296       | 41278      | 2018           | 95.34           |
+| public       | agents_4_duplicate_confidence_table | twitter_url_zw                 | 43296       | 40770      | 2526           | 94.17           |
+| public       | agents_4_duplicate_confidence_table | youtube_url_zw                 | 43296       | 42521      | 775            | 98.21           |
+| public       | agents_4_duplicate_confidence_table | tiktok_url_zw                  | 43296       | 43001      | 295            | 99.32           |
+| public       | agents_4_duplicate_confidence_table | other_socials_zw               | 43296       | 43206      | 90             | 99.79           |
+| public       | agents_4_duplicate_confidence_table | brokerage_name                 | 43296       | 984        | 42312          | 2.27            |
+| public       | agents_4_duplicate_confidence_table | transaction_zipcodes           | 43296       | 43296      | 0              | 100.00          |
+| public       | agents_4_duplicate_confidence_table | license_id                     | 43296       | 43296      | 0              | 100.00          |
+| public       | agents_4_duplicate_confidence_table | industry                       | 43296       | 43296      | 0              | 100.00          |
+| public       | agents_4_duplicate_confidence_table | fello_customer_status          | 43296       | 43296      | 0              | 100.00          |
+| public       | agents_4_duplicate_confidence_table | date_of_churn                  | 43296       | 43296      | 0              | 100.00          |
+| public       | agents_4_duplicate_confidence_table | is_marketing_contact           | 43296       | 43296      | 0              | 100.00          |
+| public       | agents_4_duplicate_confidence_table | created_at                     | 43296       | 0          | 43296          | 0.00            |
+| public       | agents_4_duplicate_confidence_table | updated_at                     | 43296       | 0          | 43296          | 0.00            |
+| public       | agents_4_duplicate_confidence_table | team_id                        | 43296       | 0          | 43296          | 0.00            |
+| public       | agents_4_duplicate_confidence_table | normalized_full_name           | 43296       | 43296      | 0              | 100.00          |
+| public       | agents_4_duplicate_confidence_table | normalized_email               | 43296       | 43296      | 0              | 100.00          |
+| public       | agents_4_duplicate_confidence_table | normalized_phone               | 43296       | 43296      | 0              | 100.00          |
+| public       | agents_4_duplicate_confidence_table | normalized_license_number      | 43296       | 43296      | 0              | 100.00          |
+| public       | agents_4_duplicate_confidence_table | deduplication_key              | 43296       | 43296      | 0              | 100.00          |
+| public       | agents_4_duplicate_confidence_table | Name match                     | 43296       | 0          | 43296          | 0.00            |
+| public       | agents_4_duplicate_confidence_table | Company-Team match             | 43296       | 0          | 43296          | 0.00            |
+| public       | agents_4_duplicate_confidence_table | Company-Designation match      | 43296       | 0          | 43296          | 0.00            |
+| public       | agents_4_duplicate_confidence_table | Company-Website match          | 43296       | 0          | 43296          | 0.00            |
+| public       | agents_4_duplicate_confidence_table | Company-Email match            | 43296       | 0          | 43296          | 0.00            |
+| public       | agents_4_duplicate_confidence_table | Brokerage-Team match           | 43296       | 0          | 43296          | 0.00            |
+| public       | agents_4_duplicate_confidence_table | Brokerage-Designation match    | 43296       | 0          | 43296          | 0.00            |
+| public       | agents_4_duplicate_confidence_table | Brokerage-Website match        | 43296       | 0          | 43296          | 0.00            |
+| public       | agents_4_duplicate_confidence_table | Brokerage-Email match          | 43296       | 0          | 43296          | 0.00            |
+| public       | agents_4_duplicate_confidence_table | Match Verdict                  | 43296       | 0          | 43296          | 0.00            |
+| public       | agents_4_duplicate_confidence_table | designation                    | 43296       | 11509      | 31787          | 26.58           |
+| public       | agents_4_duplicate_confidence_table | zillow_pro_or_not              | 43296       | 43296      | 0              | 100.00          |
+| public       | agents_4_duplicate_confidence_table | Zillow_Review                  | 43296       | 35056      | 8240           | 80.97           |
+| public       | agents_4_duplicate_confidence_table | Zillow_review_count            | 43296       | 35062      | 8234           | 80.98           |
+| public       | agents_4_duplicate_confidence_table | is_duplicate_agent             | 43296       | 0          | 43296          | 0.00            |
+| public       | agents_4_hemanth                    | id                             | 46372       | 0          | 46372          | 0.00            |
+| public       | agents_4_hemanth                    | list_name                      | 46372       | 0          | 46372          | 0.00            |
+| public       | agents_4_hemanth                    | list_company                   | 46372       | 0          | 46372          | 0.00            |
+| public       | agents_4_hemanth                    | list_location                  | 46372       | 0          | 46372          | 0.00            |
+| public       | agents_4_hemanth                    | full_name_zw                   | 46372       | 43296      | 3076           | 93.37           |
+| public       | agents_4_hemanth                    | agent_designation_zw           | 46372       | 42904      | 3468           | 92.52           |
+| public       | agents_4_hemanth                    | team_name_zw                   | 46372       | 43898      | 2474           | 94.66           |
+| public       | agents_4_hemanth                    | about_agent_zw                 | 46372       | 42908      | 3464           | 92.53           |
+| public       | agents_4_hemanth                    | agent_address_zw               | 46372       | 43652      | 2720           | 94.13           |
+| public       | agents_4_hemanth                    | address_url_zw                 | 46372       | 43676      | 2696           | 94.19           |
+| public       | agents_4_hemanth                    | agent_email_zw                 | 46372       | 43376      | 2996           | 93.54           |
+| public       | agents_4_hemanth                    | personal_email                 | 46372       | 4600       | 41772          | 9.92            |
+| public       | agents_4_hemanth                    | agent_phone_numbers_zw         | 46372       | 42904      | 3468           | 92.52           |
+| public       | agents_4_hemanth                    | zillow_profile_url_zw          | 46372       | 42936      | 3436           | 92.59           |
+| public       | agents_4_hemanth                    | sales_last_12_months_zw        | 46372       | 43287      | 3085           | 93.35           |
+| public       | agents_4_hemanth                    | total_sales_zw                 | 46372       | 43287      | 3085           | 93.35           |
+| public       | agents_4_hemanth                    | average_price_zw               | 46372       | 43365      | 3007           | 93.52           |
+| public       | agents_4_hemanth                    | price_range_zw                 | 46372       | 43287      | 3085           | 93.35           |
+| public       | agents_4_hemanth                    | website_zw                     | 46372       | 44231      | 2141           | 95.38           |
+| public       | agents_4_hemanth                    | linkedin_url_zw                | 46372       | 45349      | 1023           | 97.79           |
+| public       | agents_4_hemanth                    | facebook_url_zw                | 46372       | 44812      | 1560           | 96.64           |
+| public       | agents_4_hemanth                    | instagram_url_zw               | 46372       | 46021      | 351            | 99.24           |
+| public       | agents_4_hemanth                    | twitter_url_zw                 | 46372       | 45963      | 409            | 99.12           |
+| public       | agents_4_hemanth                    | youtube_url_zw                 | 46372       | 46221      | 151            | 99.67           |
+| public       | agents_4_hemanth                    | tiktok_url_zw                  | 46372       | 46320      | 52             | 99.89           |
+| public       | agents_4_hemanth                    | other_socials_zw               | 46372       | 46349      | 23             | 99.95           |
+| public       | agents_4_hemanth                    | brokerage_name                 | 46372       | 1036       | 45336          | 2.23            |
+| public       | agents_4_hemanth                    | transaction_zipcodes           | 46372       | 46372      | 0              | 100.00          |
+| public       | agents_4_hemanth                    | license_id                     | 46372       | 46372      | 0              | 100.00          |
+| public       | agents_4_hemanth                    | industry                       | 46372       | 42904      | 3468           | 92.52           |
+| public       | agents_4_hemanth                    | fello_customer_status          | 46372       | 46372      | 0              | 100.00          |
+| public       | agents_4_hemanth                    | date_of_churn                  | 46372       | 46372      | 0              | 100.00          |
+| public       | agents_4_hemanth                    | is_marketing_contact           | 46372       | 46372      | 0              | 100.00          |
+| public       | agents_4_hemanth                    | created_at                     | 46372       | 42904      | 3468           | 92.52           |
+| public       | agents_4_hemanth                    | updated_at                     | 46372       | 1132       | 45240          | 2.44            |
+| public       | agents_4_hemanth                    | team_id                        | 46372       | 0          | 46372          | 0.00            |
+| public       | agents_4_hemanth                    | Zillow_Review                  | 46372       | 45279      | 1093           | 97.64           |
+| public       | agents_4_hemanth                    | Zillow_review_count            | 46372       | 45279      | 1093           | 97.64           |
+| public       | agents_4_hemanth                    | designation                    | 46372       | 4600       | 41772          | 9.92            |
+| public       | agents_duplicate_confidence_table   | id                             | 16292       | 0          | 16292          | 0.00            |
+| public       | agents_duplicate_confidence_table   | list_name                      | 16292       | 1          | 16291          | 0.01            |
+| public       | agents_duplicate_confidence_table   | list_company                   | 16292       | 0          | 16292          | 0.00            |
+| public       | agents_duplicate_confidence_table   | list_location                  | 16292       | 0          | 16292          | 0.00            |
+| public       | agents_duplicate_confidence_table   | full_name_zw                   | 16292       | 3434       | 12858          | 21.08           |
+| public       | agents_duplicate_confidence_table   | agent_designation_zw           | 16292       | 6772       | 9520           | 41.57           |
+| public       | agents_duplicate_confidence_table   | team_name_zw                   | 16292       | 6528       | 9764           | 40.07           |
+| public       | agents_duplicate_confidence_table   | about_agent_zw                 | 16292       | 4333       | 11959          | 26.60           |
+| public       | agents_duplicate_confidence_table   | agent_address_zw               | 16292       | 5084       | 11208          | 31.21           |
+| public       | agents_duplicate_confidence_table   | address_url_zw                 | 16292       | 14169      | 2123           | 86.97           |
+| public       | agents_duplicate_confidence_table   | agent_email_zw                 | 16292       | 3796       | 12496          | 23.30           |
+| public       | agents_duplicate_confidence_table   | personal_email                 | 16292       | 12563      | 3729           | 77.11           |
+| public       | agents_duplicate_confidence_table   | agent_phone_numbers_zw         | 16292       | 3381       | 12911          | 20.75           |
+| public       | agents_duplicate_confidence_table   | zillow_profile_url_zw          | 16292       | 3231       | 13061          | 19.83           |
+| public       | agents_duplicate_confidence_table   | sales_last_12_months_zw        | 16292       | 3498       | 12794          | 21.47           |
+| public       | agents_duplicate_confidence_table   | total_sales_zw                 | 16292       | 5599       | 10693          | 34.37           |
+| public       | agents_duplicate_confidence_table   | average_price_zw               | 16292       | 7296       | 8996           | 44.78           |
+| public       | agents_duplicate_confidence_table   | price_range_zw                 | 16292       | 6967       | 9325           | 42.76           |
+| public       | agents_duplicate_confidence_table   | website_zw                     | 16292       | 7878       | 8414           | 48.36           |
+| public       | agents_duplicate_confidence_table   | linkedin_url_zw                | 16292       | 12203      | 4089           | 74.90           |
+| public       | agents_duplicate_confidence_table   | facebook_url_zw                | 16292       | 9900       | 6392           | 60.77           |
+| public       | agents_duplicate_confidence_table   | instagram_url_zw               | 16292       | 14860      | 1432           | 91.21           |
+| public       | agents_duplicate_confidence_table   | twitter_url_zw                 | 16292       | 14632      | 1660           | 89.81           |
+| public       | agents_duplicate_confidence_table   | youtube_url_zw                 | 16292       | 15754      | 538            | 96.70           |
+| public       | agents_duplicate_confidence_table   | tiktok_url_zw                  | 16292       | 16007      | 285            | 98.25           |
+| public       | agents_duplicate_confidence_table   | other_socials_zw               | 16292       | 16212      | 80             | 99.51           |
+| public       | agents_duplicate_confidence_table   | brokerage_name                 | 16292       | 756        | 15536          | 4.64            |
+| public       | agents_duplicate_confidence_table   | transaction_zipcodes           | 16292       | 16292      | 0              | 100.00          |
+| public       | agents_duplicate_confidence_table   | license_id                     | 16292       | 16292      | 0              | 100.00          |
+| public       | agents_duplicate_confidence_table   | industry                       | 16292       | 13694      | 2598           | 84.05           |
+| public       | agents_duplicate_confidence_table   | fello_customer_status          | 16292       | 16292      | 0              | 100.00          |
+| public       | agents_duplicate_confidence_table   | date_of_churn                  | 16292       | 16292      | 0              | 100.00          |
+| public       | agents_duplicate_confidence_table   | is_marketing_contact           | 16292       | 16292      | 0              | 100.00          |
+| public       | agents_duplicate_confidence_table   | created_at                     | 16292       | 1658       | 14634          | 10.18           |
+| public       | agents_duplicate_confidence_table   | updated_at                     | 16292       | 1658       | 14634          | 10.18           |
+| public       | agents_duplicate_confidence_table   | team_id                        | 16292       | 0          | 16292          | 0.00            |
+| public       | agents_duplicate_confidence_table   | normalized_full_name           | 16292       | 5431       | 10861          | 33.34           |
+| public       | agents_duplicate_confidence_table   | normalized_email               | 16292       | 5431       | 10861          | 33.34           |
+| public       | agents_duplicate_confidence_table   | normalized_phone               | 16292       | 5436       | 10856          | 33.37           |
+| public       | agents_duplicate_confidence_table   | normalized_license_number      | 16292       | 12164      | 4128           | 74.66           |
+| public       | agents_duplicate_confidence_table   | deduplication_key              | 16292       | 12164      | 4128           | 74.66           |
+| public       | agents_duplicate_confidence_table   | Company-Team match             | 16292       | 0          | 16292          | 0.00            |
+| public       | agents_duplicate_confidence_table   | Company-Designation match      | 16292       | 0          | 16292          | 0.00            |
+| public       | agents_duplicate_confidence_table   | Company-Website match          | 16292       | 0          | 16292          | 0.00            |
+| public       | agents_duplicate_confidence_table   | Company-Email match            | 16292       | 0          | 16292          | 0.00            |
+| public       | agents_duplicate_confidence_table   | Name match                     | 16292       | 0          | 16292          | 0.00            |
+| public       | agents_duplicate_confidence_table   | Brokerage-Team match           | 16292       | 0          | 16292          | 0.00            |
+| public       | agents_duplicate_confidence_table   | Brokerage-Designation match    | 16292       | 0          | 16292          | 0.00            |
+| public       | agents_duplicate_confidence_table   | Brokerage-Website match        | 16292       | 0          | 16292          | 0.00            |
+| public       | agents_duplicate_confidence_table   | Brokerage-Email match          | 16292       | 0          | 16292          | 0.00            |
+| public       | agents_duplicate_confidence_table   | Match Verdict                  | 16292       | 0          | 16292          | 0.00            |
+| public       | agents_duplicate_confidence_table   | aryan_medium                   | 16292       | 4128       | 12164          | 25.34           |
+| public       | agents_duplicate_confidence_table   | zillow_pro_or_not              | 16292       | 6098       | 10194          | 37.43           |
+| public       | agents_duplicate_confidence_table   | Zillow_Review                  | 16292       | 11714      | 4578           | 71.90           |
+| public       | agents_duplicate_confidence_table   | Zillow_review_count            | 16292       | 11715      | 4577           | 71.91           |
+| public       | agents_maps                         | id                             | 277711      | 0          | 277711         | 0.00            |
+| public       | agents_maps                         | list_name                      | 277711      | 0          | 277711         | 0.00            |
+| public       | agents_maps                         | list_company                   | 277711      | 0          | 277711         | 0.00            |
+| public       | agents_maps                         | list_location                  | 277711      | 25         | 277686         | 0.01            |
+| public       | agents_maps                         | full_name_zw                   | 277711      | 277711     | 0              | 100.00          |
+| public       | agents_maps                         | agent_designation_zw           | 277711      | 277711     | 0              | 100.00          |
+| public       | agents_maps                         | team_name_zw                   | 277711      | 277711     | 0              | 100.00          |
+| public       | agents_maps                         | about_agent_zw                 | 277711      | 277711     | 0              | 100.00          |
+| public       | agents_maps                         | agent_address_zw               | 277711      | 277711     | 0              | 100.00          |
+| public       | agents_maps                         | address_url_zw                 | 277711      | 277711     | 0              | 100.00          |
+| public       | agents_maps                         | agent_email_zw                 | 277711      | 277711     | 0              | 100.00          |
+| public       | agents_maps                         | personal_email                 | 277711      | 0          | 277711         | 0.00            |
+| public       | agents_maps                         | agent_phone_numbers_zw         | 277711      | 277711     | 0              | 100.00          |
+| public       | agents_maps                         | zillow_profile_url_zw          | 277711      | 277711     | 0              | 100.00          |
+| public       | agents_maps                         | sales_last_12_months_zw        | 277711      | 277711     | 0              | 100.00          |
+| public       | agents_maps                         | total_sales_zw                 | 277711      | 277711     | 0              | 100.00          |
+| public       | agents_maps                         | average_price_zw               | 277711      | 277711     | 0              | 100.00          |
+| public       | agents_maps                         | price_range_zw                 | 277711      | 277711     | 0              | 100.00          |
+| public       | agents_maps                         | website_zw                     | 277711      | 277711     | 0              | 100.00          |
+| public       | agents_maps                         | linkedin_url_zw                | 277711      | 277711     | 0              | 100.00          |
+| public       | agents_maps                         | facebook_url_zw                | 277711      | 277711     | 0              | 100.00          |
+| public       | agents_maps                         | instagram_url_zw               | 277711      | 277711     | 0              | 100.00          |
+| public       | agents_maps                         | twitter_url_zw                 | 277711      | 277711     | 0              | 100.00          |
+| public       | agents_maps                         | youtube_url_zw                 | 277711      | 277711     | 0              | 100.00          |
+| public       | agents_maps                         | tiktok_url_zw                  | 277711      | 277711     | 0              | 100.00          |
+| public       | agents_maps                         | other_socials_zw               | 277711      | 277711     | 0              | 100.00          |
+| public       | agents_maps                         | brokerage_name                 | 277711      | 0          | 277711         | 0.00            |
+| public       | agents_maps                         | transaction_zipcodes           | 277711      | 277711     | 0              | 100.00          |
+| public       | agents_maps                         | license_id                     | 277711      | 277711     | 0              | 100.00          |
+| public       | agents_maps                         | industry                       | 277711      | 277711     | 0              | 100.00          |
+| public       | agents_maps                         | fello_customer_status          | 277711      | 277711     | 0              | 100.00          |
+| public       | agents_maps                         | date_of_churn                  | 277711      | 277711     | 0              | 100.00          |
+| public       | agents_maps                         | is_marketing_contact           | 277711      | 277711     | 0              | 100.00          |
+| public       | agents_maps                         | created_at                     | 277711      | 277711     | 0              | 100.00          |
+| public       | agents_maps                         | updated_at                     | 277711      | 0          | 277711         | 0.00            |
+| public       | agents_maps                         | team_id                        | 277711      | 0          | 277711         | 0.00            |
+| public       | agents_maps                         | Zillow_Review                  | 277711      | 277711     | 0              | 100.00          |
+| public       | agents_maps                         | Zillow_review_count            | 277711      | 277711     | 0              | 100.00          |
+| public       | agents_maps                         | designation                    | 277711      | 0          | 277711         | 0.00            |
+| public       | agents_maps                         | Status                         | 277711      | 231993     | 45718          | 83.54           |
+| public       | agents_maps                         | team_size                      | 277711      | 0          | 277711         | 0.00            |
+| public       | agents_maps                         | team_summary_id                | 277711      | 39204      | 238507         | 14.12           |
+| public       | agents_maps                         | ts_id                          | 277711      | 212617     | 65094          | 76.56           |
+| public       | agents_maps                         | ready_for_nua                  | 277711      | 113189     | 164522         | 40.76           |
+| public       | Company Info Team Members           | member_id                      | 1225087     | 0          | 1225087        | 0.00            |
+| public       | Company Info Team Members           | company_uuid                   | 1225087     | 0          | 1225087        | 0.00            |
+| public       | Company Info Team Members           | team_id                        | 1225087     | 373181     | 851906         | 30.46           |
+| public       | Company Info Team Members           | name                           | 1225087     | 0          | 1225087        | 0.00            |
+| public       | Company Info Team Members           | email                          | 1225087     | 735756     | 489331         | 60.06           |
+| public       | Company Info Team Members           | phone                          | 1225087     | 418832     | 806255         | 34.19           |
+| public       | Company Info Team Members           | designation                    | 1225087     | 148324     | 1076763        | 12.11           |
+| public       | Company Info Team Members           | created_at                     | 1225087     | 0          | 1225087        | 0.00            |
+| public       | Company Info Team Members           | Team_size                      | 1225087     | 373181     | 851906         | 30.46           |
+| public       | Company Info Team Members           | duplicate name                 | 1225087     | 1062434    | 162653         | 86.72           |
+| public       | Company Info Team Members           | Match                          | 1225087     | 900298     | 324789         | 73.49           |
+| public       | Company Info Team Members           | NU_diff_team                   | 1225087     | 950285     | 274802         | 77.57           |
+| public       | Company Info Team Members           | to be updated in NU            | 1225087     | 1139864    | 85223          | 93.04           |
+| public       | Company Info Team Members           | NU_Estimated_TS                | 1225087     | 1112650    | 112437         | 90.82           |
+| public       | Company Info Team Members           | confidence                     | 1225087     | 1112650    | 112437         | 90.82           |
+| public       | company_info                        | uuid                           | 359786      | 0          | 359786         | 0.00            |
+| public       | company_info                        | website                        | 359786      | 341690     | 18096          | 94.97           |
+| public       | company_info                        | team_members                   | 359786      | 48872      | 310914         | 13.58           |
+| public       | company_info                        | email                          | 359786      | 359786     | 0              | 100.00          |
+| public       | company_info                        | phone                          | 359786      | 359786     | 0              | 100.00          |
+| public       | company_info                        | analysis                       | 359786      | 135535     | 224251         | 37.67           |
+| public       | company_info                        | name_count                     | 359786      | 57142      | 302644         | 15.88           |
+| public       | company_info                        | team_id                        | 359786      | 90038      | 269748         | 25.03           |
+| public       | company_info                        | TS_team_size                   | 359786      | 90353      | 269433         | 25.11           |
+| public       | company_info                        | CI_unique_name                 | 359786      | 97174      | 262612         | 27.01           |
+| public       | company_info                        | CI_UniqueName_count            | 359786      | 97174      | 262612         | 27.01           |
+| public       | company_info                        | match                          | 359786      | 271466     | 88320          | 75.45           |
+| public       | company_info                        | calculated_team_count          | 359786      | 1350       | 358436         | 0.38            |
+| public       | company_info                        | needs_verification             | 359786      | 0          | 359786         | 0.00            |
+| public       | company_info                        | team_page_url                  | 359786      | 61463      | 298323         | 17.08           |
+| public       | company_info                        | team_members_clean             | 359786      | 48872      | 310914         | 13.58           |
+| public       | company_info                        | NU_url_max                     | 359786      | 100357     | 259429         | 27.89           |
+| public       | company_info                        | NU_url_teamCount               | 359786      | 114195     | 245591         | 31.74           |
+| public       | company_info                        | nu_full_name                   | 359786      | 1350       | 358436         | 0.38            |
+| public       | company_info                        | nu_full_name_cleaned           | 359786      | 1350       | 358436         | 0.38            |
+| public       | company_info                        | CI_unique_data                 | 359786      | 97174      | 262612         | 27.01           |
+| public       | company_info                        | NU_common_names                | 359786      | 109402     | 250384         | 30.41           |
+| public       | company_info                        | NU_UniqueNames_To_be_added     | 359786      | 316516     | 43270          | 87.97           |
+| public       | company_info                        | CI_team_size                   | 359786      | 97174      | 262612         | 27.01           |
+| public       | Current_Customer_Master_List        | Record ID - Contact            | 22756       | 0          | 22756          | 0.00            |
+| public       | Current_Customer_Master_List        | First Name                     | 22756       | 19         | 22737          | 0.08            |
+| public       | Current_Customer_Master_List        | Last Name                      | 22756       | 21         | 22735          | 0.09            |
+| public       | Current_Customer_Master_List        | Email                          | 22756       | 0          | 22756          | 0.00            |
+| public       | Current_Customer_Master_List        | Phone Number                   | 22756       | 37         | 22719          | 0.16            |
+| public       | Current_Customer_Master_List        | Contact owner                  | 22756       | 0          | 22756          | 0.00            |
+| public       | Current_Customer_Master_List        | Last Activity Date             | 22756       | 38         | 22718          | 0.17            |
+| public       | Current_Customer_Master_List        | Lead Status                    | 22756       | 393        | 22363          | 1.73            |
+| public       | Current_Customer_Master_List        | Marketing contact status       | 22756       | 0          | 22756          | 0.00            |
+| public       | Current_Customer_Master_List        | Create Date                    | 22756       | 0          | 22756          | 0.00            |
+| public       | Current_Customer_Master_List        | Record ID - Company            | 22756       | 29         | 22727          | 0.13            |
+| public       | Current_Customer_Master_List        | Company name                   | 22756       | 61         | 22695          | 0.27            |
+| public       | Current_Customer_Master_List        | Company owner                  | 22756       | 204        | 22552          | 0.90            |
+| public       | Current_Customer_Master_List        | Create Date_1                  | 22756       | 29         | 22727          | 0.13            |
+| public       | Current_Customer_Master_List        | Phone Number_1                 | 22756       | 350        | 22406          | 1.54            |
+| public       | Current_Customer_Master_List        | Last Activity Date_1           | 22756       | 35         | 22721          | 0.15            |
+| public       | Current_Customer_Master_List        | City                           | 22756       | 300        | 22456          | 1.32            |
+| public       | Current_Customer_Master_List        | Country/Region                 | 22756       | 295        | 22461          | 1.30            |
+| public       | Current_Customer_Master_List        | Industry                       | 22756       | 302        | 22454          | 1.33            |
+| public       | Current_Customer_Master_List        | Added To List On               | 22756       | 397        | 22359          | 1.74            |
+| public       | Data_AT_Properties                  | uuid                           | 4621        | 0          | 4621           | 0.00            |
+| public       | Data_AT_Properties                  | id                             | 4621        | 0          | 4621           | 0.00            |
+| public       | Data_AT_Properties                  | full_name                      | 4621        | 0          | 4621           | 0.00            |
+| public       | Data_AT_Properties                  | title                          | 4621        | 0          | 4621           | 0.00            |
+| public       | Data_AT_Properties                  | email                          | 4621        | 0          | 4621           | 0.00            |
+| public       | Data_AT_Properties                  | phone                          | 4621        | 0          | 4621           | 0.00            |
+| public       | Data_AT_Properties                  | mobile_phone                   | 4621        | 446        | 4175           | 9.65            |
+| public       | Data_AT_Properties                  | office_phone                   | 4621        | 446        | 4175           | 9.65            |
+| public       | Data_AT_Properties                  | website                        | 4621        | 446        | 4175           | 9.65            |
+| public       | Data_AT_Properties                  | team_name                      | 4621        | 3070       | 1551           | 66.44           |
+| public       | Data_AT_Properties                  | office_name                    | 4621        | 0          | 4621           | 0.00            |
+| public       | Data_AT_Properties                  | office_address                 | 4621        | 0          | 4621           | 0.00            |
+| public       | Data_AT_Properties                  | city                           | 4621        | 0          | 4621           | 0.00            |
+| public       | Data_AT_Properties                  | state                          | 4621        | 0          | 4621           | 0.00            |
+| public       | Data_AT_Properties                  | zip                            | 4621        | 0          | 4621           | 0.00            |
+| public       | Data_AT_Properties                  | profile_url                    | 4621        | 0          | 4621           | 0.00            |
+| public       | Data_AT_Properties                  | social_facebook                | 4621        | 2783       | 1838           | 60.23           |
+| public       | Data_AT_Properties                  | social_linkedin                | 4621        | 3203       | 1418           | 69.31           |
+| public       | Data_AT_Properties                  | social_twitter                 | 4621        | 4621       | 0              | 100.00          |
+| public       | Data_AT_Properties                  | social_instagram               | 4621        | 2936       | 1685           | 63.54           |
+| public       | Data_AT_Properties                  | social_youtube                 | 4621        | 4313       | 308            | 93.33           |
+| public       | Data_AT_Properties                  | is_commercial                  | 4621        | 0          | 4621           | 0.00            |
+| public       | Data_AT_Properties                  | preferred_loan_officer_name    | 4621        | 3237       | 1384           | 70.05           |
+| public       | Data_AT_Properties                  | preferred_loan_officer_phone   | 4621        | 3237       | 1384           | 70.05           |
+| public       | Data_AT_Properties                  | preferred_loan_officer_link    | 4621        | 3237       | 1384           | 70.05           |
+| public       | Data_AT_Properties                  | normalized_full_name           | 4621        | 0          | 4621           | 0.00            |
+| public       | Data_AT_Properties                  | normalized_email               | 4621        | 288        | 4333           | 6.23            |
+| public       | Data_AT_Properties                  | normalized_phone               | 4621        | 350        | 4271           | 7.57            |
+| public       | Data_AT_Properties                  | normalized_mobile              | 4621        | 1230       | 3391           | 26.62           |
+| public       | Data_AT_Properties                  | normalized_office_phone        | 4621        | 470        | 4151           | 10.17           |
+| public       | Data_AT_Properties                  | team_summary_id                | 4621        | 0          | 4621           | 0.00            |
+| public       | Data_BetterHomes                    | uuid                           | 10106       | 0          | 10106          | 0.00            |
+| public       | Data_BetterHomes                    | Full_Name                      | 10106       | 0          | 10106          | 0.00            |
+| public       | Data_BetterHomes                    | Company                        | 10106       | 0          | 10106          | 0.00            |
+| public       | Data_BetterHomes                    | Email                          | 10106       | 0          | 10106          | 0.00            |
+| public       | Data_BetterHomes                    | Mobile                         | 10106       | 245        | 9861           | 2.42            |
+| public       | Data_BetterHomes                    | Fax                            | 10106       | 8925       | 1181           | 88.31           |
+| public       | Data_BetterHomes                    | Agent_Profile_URL              | 10106       | 0          | 10106          | 0.00            |
+| public       | Data_BetterHomes                    | normalized_full_name           | 10106       | 0          | 10106          | 0.00            |
+| public       | Data_BetterHomes                    | normalized_email               | 10106       | 0          | 10106          | 0.00            |
+| public       | Data_BetterHomes                    | normalized_mobile              | 10106       | 245        | 9861           | 2.42            |
+| public       | Data_BetterHomes                    | normalized_fax                 | 10106       | 8925       | 1181           | 88.31           |
+| public       | Data_BHHS                           | uuid                           | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | id                             | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | first_name                     | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | last_name                      | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | full_name                      | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | city                           | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | state                          | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | languages                      | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | email                          | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | license                        | 44220       | 28429      | 15791          | 64.29           |
+| public       | Data_BHHS                           | mobile_phone                   | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | office_phone                   | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | fax                            | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | address                        | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | postal_code                    | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | country                        | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | job_title                      | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | team_name                      | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | team_id                        | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | team_url                       | 44220       | 38159      | 6061           | 86.29           |
+| public       | Data_BHHS                           | office_name                    | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | office_key                     | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | is_luxury_agent                | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | marketing_title                | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | market_center_name             | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | favorite_service_areas         | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | designations                   | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | bhhswebsite_url                | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | member_url                     | 44220       | 379        | 43841          | 0.86            |
+| public       | Data_BHHS                           | commercial                     | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | social_facebook                | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | social_linkedin                | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | social_twitter                 | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | social_youtube                 | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | social_instagram               | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | social_pinterest               | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | social_googleplus              | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | social_tumblr                  | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | typename                       | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | market_center_typename         | 44220       | 44220      | 0              | 100.00          |
+| public       | Data_BHHS                           | social_typename                | 44220       | 44220      | 0              | 100.00          |
+| public       | Data_BHHS                           | normalized_full_name           | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | normalized_email               | 44220       | 1686       | 42534          | 3.81            |
+| public       | Data_BHHS                           | normalized_mobile              | 44220       | 2447       | 41773          | 5.53            |
+| public       | Data_BHHS                           | normalized_office_phone        | 44220       | 2          | 44218          | 0.00            |
+| public       | Data_BHHS                           | team_summary_id                | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_BHHS                           | team_summary_id_text           | 44220       | 0          | 44220          | 0.00            |
+| public       | Data_Epique                         | uuid                           | 3897        | 0          | 3897           | 0.00            |
+| public       | Data_Epique                         | first_name                     | 3897        | 0          | 3897           | 0.00            |
+| public       | Data_Epique                         | last_name                      | 3897        | 0          | 3897           | 0.00            |
+| public       | Data_Epique                         | full_name                      | 3897        | 0          | 3897           | 0.00            |
+| public       | Data_Epique                         | email                          | 3897        | 0          | 3897           | 0.00            |
+| public       | Data_Epique                         | phone                          | 3897        | 21         | 3876           | 0.54            |
+| public       | Data_Epique                         | position                       | 3897        | 1206       | 2691           | 30.95           |
+| public       | Data_Epique                         | licence                        | 3897        | 1068       | 2829           | 27.41           |
+| public       | Data_Epique                         | website                        | 3897        | 3264       | 633            | 83.76           |
+| public       | Data_Epique                         | facebook                       | 3897        | 2013       | 1884           | 51.66           |
+| public       | Data_Epique                         | instagram                      | 3897        | 2656       | 1241           | 68.15           |
+| public       | Data_Epique                         | twitter                        | 3897        | 3551       | 346            | 91.12           |
+| public       | Data_Epique                         | youtube                        | 3897        | 3330       | 567            | 85.45           |
+| public       | Data_Epique                         | linkedin                       | 3897        | 2814       | 1083           | 72.21           |
+| public       | Data_Epique                         | google_maps                    | 3897        | 3156       | 741            | 80.99           |
+| public       | Data_Epique                         | agent_url                      | 3897        | 0          | 3897           | 0.00            |
+| public       | Data_Epique                         | normalized_full_name           | 3897        | 0          | 3897           | 0.00            |
+| public       | Data_Epique                         | normalized_email               | 3897        | 0          | 3897           | 0.00            |
+| public       | Data_Epique                         | normalized_phone               | 3897        | 21         | 3876           | 0.54            |
+| public       | Data_KW                             | uuid                           | 123083      | 0          | 123083         | 0.00            |
+| public       | Data_KW                             | id                             | 123083      | 1          | 123082         | 0.00            |
+| public       | Data_KW                             | first_name                     | 123083      | 1          | 123082         | 0.00            |
+| public       | Data_KW                             | last_name                      | 123083      | 1          | 123082         | 0.00            |
+| public       | Data_KW                             | full_name                      | 123083      | 1          | 123082         | 0.00            |
+| public       | Data_KW                             | city                           | 123083      | 1          | 123082         | 0.00            |
+| public       | Data_KW                             | state                          | 123083      | 1          | 123082         | 0.00            |
+| public       | Data_KW                             | languages                      | 123083      | 1          | 123082         | 0.00            |
+| public       | Data_KW                             | email                          | 123083      | 1          | 123082         | 0.00            |
+| public       | Data_KW                             | license                        | 123083      | 1          | 123082         | 0.00            |
+| public       | Data_KW                             | mobile_phone                   | 123083      | 1          | 123082         | 0.00            |
+| public       | Data_KW                             | is_luxury_agent                | 123083      | 1          | 123082         | 0.00            |
+| public       | Data_KW                             | marketing_title                | 123083      | 1          | 123082         | 0.00            |
+| public       | Data_KW                             | market_center_name             | 123083      | 1          | 123082         | 0.00            |
+| public       | Data_KW                             | favorite_service_areas         | 123083      | 1          | 123082         | 0.00            |
+| public       | Data_KW                             | social_facebook                | 123083      | 1          | 123082         | 0.00            |
+| public       | Data_KW                             | social_linkedin                | 123083      | 1          | 123082         | 0.00            |
+| public       | Data_KW                             | social_twitter                 | 123083      | 1          | 123082         | 0.00            |
+| public       | Data_KW                             | social_youtube                 | 123083      | 1          | 123082         | 0.00            |
+| public       | Data_KW                             | social_instagram               | 123083      | 1          | 123082         | 0.00            |
+| public       | Data_KW                             | typename                       | 123083      | 1          | 123082         | 0.00            |
+| public       | Data_KW                             | market_center_typename         | 123083      | 123083     | 0              | 100.00          |
+| public       | Data_KW                             | social_typename                | 123083      | 1          | 123082         | 0.00            |
+| public       | Data_KW                             | normalized_full_name           | 123083      | 1          | 123082         | 0.00            |
+| public       | Data_KW                             | normalized_email               | 123083      | 0          | 123083         | 0.00            |
+| public       | Data_KW                             | normalized_phone               | 123083      | 0          | 123083         | 0.00            |
+| public       | Data_KW                             | team_summary_id                | 123083      | 6603       | 116480         | 5.36            |
+| public       | Data_KW                             | normalized_market_center       | 123083      | 6603       | 116480         | 5.36            |
+| public       | Data_KW                             | uuid_text                      | 123083      | 0          | 123083         | 0.00            |
+| public       | Data_maps_teams                     | id                             | 57392       | 0          | 57392          | 0.00            |
+| public       | Data_maps_teams                     | created_at                     | 57392       | 0          | 57392          | 0.00            |
+| public       | Data_maps_teams                     | HS_Ticket                      | 57392       | 57392      | 0              | 100.00          |
+| public       | Data_maps_teams                     | list_name                      | 57392       | 16974      | 40418          | 29.58           |
+| public       | Data_maps_teams                     | list_email                     | 57392       | 57392      | 0              | 100.00          |
+| public       | Data_maps_teams                     | list_phone                     | 57392       | 0          | 57392          | 0.00            |
+| public       | Data_maps_teams                     | list_team_name                 | 57392       | 0          | 57392          | 0.00            |
+| public       | Data_maps_teams                     | list_brokerage                 | 57392       | 57392      | 0              | 100.00          |
+| public       | Data_maps_teams                     | list_website                   | 57392       | 7077       | 50315          | 12.33           |
+| public       | Data_maps_teams                     | list_location                  | 57392       | 16         | 57376          | 0.03            |
+| public       | Data_maps_teams                     | team_size                      | 57392       | 0          | 57392          | 0.00            |
+| public       | Data_maps_teams                     | team_size_real_trends          | 57392       | 57392      | 0              | 100.00          |
+| public       | Data_maps_teams                     | team_members                   | 57392       | 16974      | 40418          | 29.58           |
+| public       | Data_maps_teams                     | brokerage_name                 | 57392       | 6686       | 50706          | 11.65           |
+| public       | Data_maps_teams                     | crm_name                       | 57392       | 6456       | 50936          | 11.25           |
+| public       | Data_maps_teams                     | social_links                   | 57392       | 57392      | 0              | 100.00          |
+| public       | Data_maps_teams                     | team_page                      | 57392       | 6451       | 50941          | 11.24           |
+| public       | Data_maps_teams                     | uuid                           | 57392       | 0          | 57392          | 0.00            |
+| public       | Data_maps_teams                     | new_website                    | 57392       | 6451       | 50941          | 11.24           |
+| public       | Data_maps_teams                     | agent_designation              | 57392       | 53412      | 3980           | 93.07           |
+| public       | Data_maps_teams                     | summary_overlap                | 57392       | 0          | 57392          | 0.00            |
+| public       | Data_maps_teams                     | duplicate_flag                 | 57392       | 0          | 57392          | 0.00            |
+| public       | Data_maps_teams                     | non_team                       | 57392       | 54951      | 2441           | 95.75           |
+| public       | Data_maps_teams                     | Status                         | 57392       | 57167      | 225            | 99.61           |
+| public       | Data_maps_teams                     | ts_id                          | 57392       | 51672      | 5720           | 90.03           |
+| public       | Data_maps_teams                     | ts_overlap_flag                | 57392       | 0          | 57392          | 0.00            |
+| public       | Data_maps_teams                     | ready_for_summary              | 57392       | 18293      | 39099          | 31.87           |
+| public       | Data_OneReal                        | uuid                           | 27925       | 0          | 27925          | 0.00            |
+| public       | Data_OneReal                        | FirstName                      | 27925       | 0          | 27925          | 0.00            |
+| public       | Data_OneReal                        | LastName                       | 27925       | 0          | 27925          | 0.00            |
+| public       | Data_OneReal                        | DisplayName                    | 27925       | 0          | 27925          | 0.00            |
+| public       | Data_OneReal                        | Email                          | 27925       | 0          | 27925          | 0.00            |
+| public       | Data_OneReal                        | Phone                          | 27925       | 1          | 27924          | 0.00            |
+| public       | Data_OneReal                        | Addresses                      | 27925       | 0          | 27925          | 0.00            |
+| public       | Data_OneReal                        | Divisions                      | 27925       | 0          | 27925          | 0.00            |
+| public       | Data_OneReal                        | ProfileURL                     | 27925       | 0          | 27925          | 0.00            |
+| public       | Data_OneReal                        | normalized_full_name           | 27925       | 0          | 27925          | 0.00            |
+| public       | Data_OneReal                        | normalized_email               | 27925       | 0          | 27925          | 0.00            |
+| public       | Data_OneReal                        | normalized_phone               | 27925       | 1          | 27924          | 0.00            |
+| public       | Data_Realtor                        | Experience                     | 379464      | 2069       | 377395         | 0.55            |
+| public       | Data_Realtor                        | Full Name                      | 379464      | 0          | 379464         | 0.00            |
+| public       | Data_Realtor                        | Description                    | 379464      | 103028     | 276436         | 27.15           |
+| public       | Data_Realtor                        | Website                        | 379464      | 72807      | 306657         | 19.19           |
+| public       | Data_Realtor                        | Profile Url                    | 379464      | 0          | 379464         | 0.00            |
+| public       | Data_Realtor                        | Photo Url                      | 379464      | 0          | 379464         | 0.00            |
+| public       | Data_Realtor                        | Languages                      | 379464      | 361750     | 17714          | 95.33           |
+| public       | Data_Realtor                        | Recommendations Count          | 379464      | 0          | 379464         | 0.00            |
+| public       | Data_Realtor                        | Email                          | 379464      | 157167     | 222297         | 41.42           |
+| public       | Data_Realtor                        | Social Media Urls              | 379464      | 318914     | 60550          | 84.04           |
+| public       | Data_Realtor                        | For Sale Count                 | 379464      | 0          | 379464         | 0.00            |
+| public       | Data_Realtor                        | For Sale Min                   | 379464      | 0          | 379464         | 0.00            |
+| public       | Data_Realtor                        | For Sale Max                   | 379464      | 0          | 379464         | 0.00            |
+| public       | Data_Realtor                        | Recently Sold Count            | 379464      | 0          | 379464         | 0.00            |
+| public       | Data_Realtor                        | Recently Sold Min              | 379464      | 0          | 379464         | 0.00            |
+| public       | Data_Realtor                        | Recently Sold Max              | 379464      | 0          | 379464         | 0.00            |
+| public       | Data_Realtor                        | Address                        | 379464      | 0          | 379464         | 0.00            |
+| public       | Data_Realtor                        | Office Name                    | 379464      | 1165       | 378299         | 0.31            |
+| public       | Data_Realtor                        | Office                         | 379464      | 45759      | 333705         | 12.06           |
+| public       | Data_Realtor                        | Mobile                         | 379464      | 40620      | 338844         | 10.70           |
+| public       | Data_Realtor                        | Fax                            | 379464      | 294952     | 84512          | 77.73           |
+| public       | Data_Realtor                        | City                           | 379464      | 4289       | 375175         | 1.13            |
+| public       | Data_Realtor                        | State                          | 379464      | 0          | 379464         | 0.00            |
+| public       | Data_Realtor                        | source_state                   | 379464      | 0          | 379464         | 0.00            |
+| public       | Data_Realtor                        | UUID                           | 379464      | 0          | 379464         | 0.00            |
+| public       | Data_Realtor                        | processing_batch               | 379464      | 0          | 379464         | 0.00            |
+| public       | Data_Realtor                        | batch_id                       | 379464      | 379464     | 0              | 100.00          |
+| public       | Data_Realtor                        | normalized_full_name           | 379464      | 0          | 379464         | 0.00            |
+| public       | Data_Realtor                        | normalized_email               | 379464      | 0          | 379464         | 0.00            |
+| public       | Data_Realtor                        | normalized_phone               | 379464      | 0          | 379464         | 0.00            |
+| public       | Data_Realtor                        | normalized_license_number      | 379464      | 0          | 379464         | 0.00            |
+| public       | Data_Realtor                        | deduplication_key              | 379464      | 0          | 379464         | 0.00            |
+| public       | Data_Realtor                        | team_summary_id                | 379464      | 1165       | 378299         | 0.31            |
+| public       | Data_Realtor                        | multi_source                   | 379464      | 0          | 379464         | 0.00            |
+| public       | Data_Realtor                        | flag                           | 379464      | 366243     | 13221          | 96.52           |
+| public       | Data_Realtor                        | uuid_text                      | 379464      | 0          | 379464         | 0.00            |
+| public       | Data_Remax                          | First Name                     | 57349       | 0          | 57349          | 0.00            |
+| public       | Data_Remax                          | Last Name                      | 57349       | 0          | 57349          | 0.00            |
+| public       | Data_Remax                          | Full Name                      | 57349       | 0          | 57349          | 0.00            |
+| public       | Data_Remax                          | job Title                      | 57349       | 0          | 57349          | 0.00            |
+| public       | Data_Remax                          | Email 1                        | 57349       | 0          | 57349          | 0.00            |
+| public       | Data_Remax                          | Email 2                        | 57349       | 0          | 57349          | 0.00            |
+| public       | Data_Remax                          | Phone Number                   | 57349       | 1601       | 55748          | 2.79            |
+| public       | Data_Remax                          | Profile URL on RE/MAX          | 57349       | 0          | 57349          | 0.00            |
+| public       | Data_Remax                          | Website                        | 57349       | 22085      | 35264          | 38.51           |
+| public       | Data_Remax                          | License Number                 | 57349       | 5          | 57344          | 0.01            |
+| public       | Data_Remax                          | Office Name                    | 57349       | 0          | 57349          | 0.00            |
+| public       | Data_Remax                          | Office City                    | 57349       | 0          | 57349          | 0.00            |
+| public       | Data_Remax                          | Office State                   | 57349       | 0          | 57349          | 0.00            |
+| public       | Data_Remax                          | Office Postal Code             | 57349       | 0          | 57349          | 0.00            |
+| public       | Data_Remax                          | Full Address                   | 57349       | 0          | 57349          | 0.00            |
+| public       | Data_Remax                          | Specialty                      | 57349       | 6908       | 50441          | 12.05           |
+| public       | Data_Remax                          | languages                      | 57349       | 1147       | 56202          | 2.00            |
+| public       | Data_Remax                          | uuid                           | 57349       | 0          | 57349          | 0.00            |
+| public       | Data_Remax                          | normalized_full_name           | 57349       | 0          | 57349          | 0.00            |
+| public       | Data_Remax                          | normalized_email               | 57349       | 0          | 57349          | 0.00            |
+| public       | Data_Remax                          | normalized_phone               | 57349       | 0          | 57349          | 0.00            |
+| public       | Data_Remax                          | normalized_license_number      | 57349       | 0          | 57349          | 0.00            |
+| public       | Data_Remax                          | deduplication_key              | 57349       | 0          | 57349          | 0.00            |
+| public       | Data_Remax                          | team_summary_id                | 57349       | 0          | 57349          | 0.00            |
+| public       | Data_Remax                          | uuid_text                      | 57349       | 0          | 57349          | 0.00            |
+| public       | Fello_Customer_Churn_Status         | uuid                           | 10000       | 0          | 10000          | 0.00            |
+| public       | Fello_Customer_Churn_Status         | record_id_contact              | 10000       | 0          | 10000          | 0.00            |
+| public       | Fello_Customer_Churn_Status         | first_name                     | 10000       | 802        | 9198           | 8.02            |
+| public       | Fello_Customer_Churn_Status         | last_name                      | 10000       | 853        | 9147           | 8.53            |
+| public       | Fello_Customer_Churn_Status         | email                          | 10000       | 4          | 9996           | 0.04            |
+| public       | Fello_Customer_Churn_Status         | phone_number                   | 10000       | 1361       | 8639           | 13.61           |
+| public       | Fello_Customer_Churn_Status         | contact_owner                  | 10000       | 848        | 9152           | 8.48            |
+| public       | Fello_Customer_Churn_Status         | contact_last_activity          | 10000       | 1123       | 8877           | 11.23           |
+| public       | Fello_Customer_Churn_Status         | lead_status                    | 10000       | 9983       | 17             | 99.83           |
+| public       | Fello_Customer_Churn_Status         | marketing_contact_status       | 10000       | 0          | 10000          | 0.00            |
+| public       | Fello_Customer_Churn_Status         | contact_create_date            | 10000       | 0          | 10000          | 0.00            |
+| public       | Fello_Customer_Churn_Status         | record_id_company              | 10000       | 1406       | 8594           | 14.06           |
+| public       | Fello_Customer_Churn_Status         | company_name                   | 10000       | 1645       | 8355           | 16.45           |
+| public       | Fello_Customer_Churn_Status         | company_owner                  | 10000       | 6664       | 3336           | 66.64           |
+| public       | Fello_Customer_Churn_Status         | company_create_date            | 10000       | 1406       | 8594           | 14.06           |
+| public       | Fello_Customer_Churn_Status         | company_phone_number           | 10000       | 6641       | 3359           | 66.41           |
+| public       | Fello_Customer_Churn_Status         | company_last_activity          | 10000       | 1746       | 8254           | 17.46           |
+| public       | Fello_Customer_Churn_Status         | city                           | 10000       | 3624       | 6376           | 36.24           |
+| public       | Fello_Customer_Churn_Status         | country_region                 | 10000       | 3569       | 6431           | 35.69           |
+| public       | Fello_Customer_Churn_Status         | industry                       | 10000       | 4900       | 5100           | 49.00           |
+| public       | Fello_Customer_Churn_Status         | added_to_list_on               | 10000       | 10000      | 0              | 100.00          |
+| public       | Fello_Customer_Status               | uuid                           | 27530       | 0          | 27530          | 0.00            |
+| public       | Fello_Customer_Status               | record_id_contact              | 27530       | 0          | 27530          | 0.00            |
+| public       | Fello_Customer_Status               | first_name                     | 27530       | 2419       | 25111          | 8.79            |
+| public       | Fello_Customer_Status               | last_name                      | 27530       | 3028       | 24502          | 11.00           |
+| public       | Fello_Customer_Status               | email                          | 27530       | 2          | 27528          | 0.01            |
+| public       | Fello_Customer_Status               | phone_number                   | 27530       | 6667       | 20863          | 24.22           |
+| public       | Fello_Customer_Status               | contact_owner                  | 27530       | 0          | 27530          | 0.00            |
+| public       | Fello_Customer_Status               | contact_last_activity          | 27530       | 4535       | 22995          | 16.47           |
+| public       | Fello_Customer_Status               | lead_status                    | 27530       | 27441      | 89             | 99.68           |
+| public       | Fello_Customer_Status               | marketing_contact_status       | 27530       | 0          | 27530          | 0.00            |
+| public       | Fello_Customer_Status               | contact_create_date            | 27530       | 0          | 27530          | 0.00            |
+| public       | Fello_Customer_Status               | record_id_company              | 27530       | 6336       | 21194          | 23.01           |
+| public       | Fello_Customer_Status               | company_name                   | 27530       | 7169       | 20361          | 26.04           |
+| public       | Fello_Customer_Status               | company_owner                  | 27530       | 18910      | 8620           | 68.69           |
+| public       | Fello_Customer_Status               | company_create_date            | 27530       | 6336       | 21194          | 23.01           |
+| public       | Fello_Customer_Status               | company_phone_number           | 27530       | 19699      | 7831           | 71.55           |
+| public       | Fello_Customer_Status               | company_last_activity          | 27530       | 6781       | 20749          | 24.63           |
+| public       | Fello_Customer_Status               | city                           | 27530       | 12975      | 14555          | 47.13           |
+| public       | Fello_Customer_Status               | country_region                 | 27530       | 12679      | 14851          | 46.06           |
+| public       | Fello_Customer_Status               | industry                       | 27530       | 15154      | 12376          | 55.05           |
+| public       | Fello_Customer_Status               | added_to_list_on               | 27530       | 27530      | 0              | 100.00          |
+| public       | mad_dashboard                       | id                             | 46          | 0          | 46             | 0.00            |
+| public       | mad_dashboard                       | total_count                    | 46          | 0          | 46             | 0.00            |
+| public       | mad_dashboard                       | tier1_count                    | 46          | 0          | 46             | 0.00            |
+| public       | mad_dashboard                       | tier1_percentage               | 46          | 0          | 46             | 0.00            |
+| public       | mad_dashboard                       | tier2_count                    | 46          | 0          | 46             | 0.00            |
+| public       | mad_dashboard                       | tier2_percentage               | 46          | 0          | 46             | 0.00            |
+| public       | mad_dashboard                       | tier3_count                    | 46          | 0          | 46             | 0.00            |
+| public       | mad_dashboard                       | tier3_percentage               | 46          | 0          | 46             | 0.00            |
+| public       | mad_dashboard                       | individual_icp_positive        | 46          | 0          | 46             | 0.00            |
+| public       | mad_dashboard                       | individual_icp_neutral         | 46          | 0          | 46             | 0.00            |
+| public       | mad_dashboard                       | individual_icp_negative        | 46          | 0          | 46             | 0.00            |
+| public       | mad_dashboard                       | created_at                     | 46          | 0          | 46             | 0.00            |
+| public       | mad_dashboard                       | tier4_count                    | 46          | 0          | 46             | 0.00            |
+| public       | mad_dashboard                       | tier4_percentage               | 46          | 0          | 46             | 0.00            |
+| public       | mad_dashboard                       | Not_Enriched_yet               | 46          | 10         | 36             | 21.74           |
+| public       | mad_dashboard                       | icp_unclassified               | 46          | 11         | 35             | 23.91           |
+| public       | mad_dashboard                       | total_teams                    | 46          | 20         | 26             | 43.48           |
+| public       | mad_dashboard                       | total_agents_in_teams          | 46          | 20         | 26             | 43.48           |
+| public       | mad_dashboard                       | Individual                     | 46          | 36         | 10             | 78.26           |
+| public       | mad_dashboard                       | Small                          | 46          | 36         | 10             | 78.26           |
+| public       | mad_dashboard                       | Medium                         | 46          | 36         | 10             | 78.26           |
+| public       | mad_dashboard                       | Large                          | 46          | 36         | 10             | 78.26           |
+| public       | mad_dashboard                       | Mega                           | 46          | 36         | 10             | 78.26           |
+| public       | mad_dashboard                       | Market_Center                  | 46          | 40         | 6              | 86.96           |
+| public       | mad_dashboard                       | KW                             | 46          | 45         | 1              | 97.83           |
+| public       | mad_dashboard                       | Remax                          | 46          | 45         | 1              | 97.83           |
+| public       | mad_dashboard                       | BHHS                           | 46          | 45         | 1              | 97.83           |
+| public       | mad_dashboard                       | exp_Realty                     | 46          | 45         | 1              | 97.83           |
+| public       | new_unified_agents                  | supabase_uuid                  | 1077569     | 0          | 1077569        | 0.00            |
+| public       | new_unified_agents                  | first_name                     | 1077569     | 11273      | 1066296        | 1.05            |
+| public       | new_unified_agents                  | last_name                      | 1077569     | 13012      | 1064557        | 1.21            |
+| public       | new_unified_agents                  | email                          | 1077569     | 153766     | 923803         | 14.27           |
+| public       | new_unified_agents                  | phone                          | 1077569     | 280922     | 796647         | 26.07           |
+| public       | new_unified_agents                  | city                           | 1077569     | 83536      | 994033         | 7.75            |
+| public       | new_unified_agents                  | state                          | 1077569     | 307747     | 769822         | 28.56           |
+| public       | new_unified_agents                  | zip_code                       | 1077569     | 932505     | 145064         | 86.54           |
+| public       | new_unified_agents                  | full_address                   | 1077569     | 621571     | 455998         | 57.68           |
+| public       | new_unified_agents                  | profile_link                   | 1077569     | 393068     | 684501         | 36.48           |
+| public       | new_unified_agents                  | website                        | 1077569     | 684590     | 392979         | 63.53           |
+| public       | new_unified_agents                  | photo_url                      | 1077569     | 620343     | 457226         | 57.57           |
+| public       | new_unified_agents                  | about                          | 1077569     | 756162     | 321407         | 70.17           |
+| public       | new_unified_agents                  | experience_years               | 1077569     | 548238     | 529331         | 50.88           |
+| public       | new_unified_agents                  | job_title                      | 1077569     | 845464     | 232105         | 78.46           |
+| public       | new_unified_agents                  | agent_designation              | 1077569     | 520363     | 557206         | 48.29           |
+| public       | new_unified_agents                  | team_id                        | 1077569     | 491686     | 585883         | 45.63           |
+| public       | new_unified_agents                  | average_price                  | 1077569     | 828412     | 249157         | 76.88           |
+| public       | new_unified_agents                  | for_sale_count                 | 1077569     | 758460     | 319109         | 70.39           |
+| public       | new_unified_agents                  | for_sale_min                   | 1077569     | 758053     | 319516         | 70.35           |
+| public       | new_unified_agents                  | for_sale_max                   | 1077569     | 758053     | 319516         | 70.35           |
+| public       | new_unified_agents                  | mls_number                     | 1077569     | 845653     | 231916         | 78.48           |
+| public       | new_unified_agents                  | zillow_id                      | 1077569     | 1071791    | 5778           | 99.46           |
+| public       | new_unified_agents                  | zillow_address_url             | 1077569     | 1067661    | 9908           | 99.08           |
+| public       | new_unified_agents                  | social_links                   | 1077569     | 513128     | 564441         | 47.62           |
+| public       | new_unified_agents                  | original_uuids                 | 1077569     | 273862     | 803707         | 25.41           |
+| public       | new_unified_agents                  | organization_names             | 1077569     | 289714     | 787855         | 26.89           |
+| public       | new_unified_agents                  | office_number                  | 1077569     | 435014     | 642555         | 40.37           |
+| public       | new_unified_agents                  | updated_at                     | 1077569     | 0          | 1077569        | 0.00            |
+| public       | new_unified_agents                  | sales_last_12_months           | 1077569     | 773477     | 304092         | 71.78           |
+| public       | new_unified_agents                  | total_sales                    | 1077569     | 822001     | 255568         | 76.28           |
+| public       | new_unified_agents                  | website_clean                  | 1077569     | 703105     | 374464         | 65.25           |
+| public       | new_unified_agents                  | zillow_review                  | 1077569     | 1062009    | 15560          | 98.56           |
+| public       | new_unified_agents                  | zillow_rating                  | 1077569     | 1062009    | 15560          | 98.56           |
+| public       | new_unified_agents                  | zillow_team_status             | 1077569     | 1067240    | 10329          | 99.04           |
+| public       | new_unified_agents                  | zillow_top_agent               | 1077569     | 1067240    | 10329          | 99.04           |
+| public       | new_unified_agents                  | google_rating                  | 1077569     | 872178     | 205391         | 80.94           |
+| public       | new_unified_agents                  | google_rating_count            | 1077569     | 872178     | 205391         | 80.94           |
+| public       | new_unified_agents                  | tech_stack                     | 1077569     | 940529     | 137040         | 87.28           |
+| public       | new_unified_agents                  | team_page_url                  | 1077569     | 736127     | 341442         | 68.31           |
+| public       | new_unified_agents                  | team_size_count                | 1077569     | 471763     | 605806         | 43.78           |
+| public       | new_unified_agents                  | team_size                      | 1077569     | 636054     | 441515         | 59.03           |
+| public       | new_unified_agents                  | sales_marketing_team           | 1077569     | 1077569    | 0              | 100.00          |
+| public       | new_unified_agents                  | team_name                      | 1077569     | 414893     | 662676         | 38.50           |
+| public       | new_unified_agents                  | brokerage_name                 | 1077569     | 547099     | 530470         | 50.77           |
+| public       | new_unified_agents                  | realtor_review                 | 1077569     | 775656     | 301913         | 71.98           |
+| public       | new_unified_agents                  | realtor_rating                 | 1077569     | 976780     | 100789         | 90.65           |
+| public       | new_unified_agents                  | zillow_premium                 | 1077569     | 1057773    | 19796          | 98.16           |
+| public       | new_unified_agents                  | realtor_premium                | 1077569     | 976780     | 100789         | 90.65           |
+| public       | new_unified_agents                  | is_luxury_agents_kw            | 1077569     | 926985     | 150584         | 86.03           |
+| public       | new_unified_agents                  | bhhs_team_page_urls            | 1077569     | 1071671    | 5898           | 99.45           |
+| public       | new_unified_agents                  | rashi_crm                      | 1077569     | 828465     | 249104         | 76.88           |
+| public       | new_unified_agents                  | full_name                      | 1077569     | 2          | 1077567        | 0.00            |
+| public       | new_unified_agents                  | source                         | 1077569     | 1123       | 1076446        | 0.10            |
+| public       | new_unified_agents                  | shailja_brokerage              | 1077569     | 882609     | 194960         | 81.91           |
+| public       | new_unified_agents                  | facebook                       | 1077569     | 747125     | 330444         | 69.33           |
+| public       | new_unified_agents                  | instagram                      | 1077569     | 924152     | 153417         | 85.76           |
+| public       | new_unified_agents                  | youtube                        | 1077569     | 1028884    | 48685          | 95.48           |
+| public       | new_unified_agents                  | twitter                        | 1077569     | 1035910    | 41659          | 96.13           |
+| public       | new_unified_agents                  | tiktok                         | 1077569     | 1058481    | 19088          | 98.23           |
+| public       | new_unified_agents                  | linkedin                       | 1077569     | 876813     | 200756         | 81.37           |
+| public       | new_unified_agents                  | CRM                            | 1077569     | 949683     | 127886         | 88.13           |
+| public       | new_unified_agents                  | marketing_tools                | 1077569     | 949683     | 127886         | 88.13           |
+| public       | new_unified_agents                  | social_label                   | 1077569     | 932770     | 144799         | 86.56           |
+| public       | new_unified_agents                  | social_Score                   | 1077569     | 932770     | 144799         | 86.56           |
+| public       | new_unified_agents                  | phone_digits                   | 1077569     | 312112     | 765457         | 28.96           |
+| public       | new_unified_agents                  | email_clean                    | 1077569     | 348342     | 729227         | 32.33           |
+| public       | new_unified_agents                  | marketingTools_combined        | 1077569     | 949587     | 127982         | 88.12           |
+| public       | new_unified_agents                  | CRM_sorted                     | 1077569     | 841135     | 236434         | 78.06           |
+| public       | new_unified_agents                  | marketing_sorted               | 1077569     | 794753     | 282816         | 73.75           |
+| public       | new_unified_agents                  | review_status                  | 1077569     | 1072977    | 4592           | 99.57           |
+| public       | new_unified_agents                  | fello_customer_status          | 1077569     | 1061606    | 15963          | 98.52           |
+| public       | new_unified_agents                  | fello_customer_uuid            | 1077569     | 1061606    | 15963          | 98.52           |
+| public       | new_unified_agents                  | review_comments                | 1077569     | 1072978    | 4591           | 99.57           |
+| public       | new_unified_agents                  | crm_main                       | 1077569     | 965939     | 111630         | 89.64           |
+| public       | new_unified_agents                  | average_price_main             | 1077569     | 828412     | 249157         | 76.88           |
+| public       | new_unified_agents                  | fello_customer_status_main     | 1077569     | 1061606    | 15963          | 98.52           |
+| public       | new_unified_agents                  | team_size_main                 | 1077569     | 355992     | 721577         | 33.04           |
+| public       | new_unified_agents                  | brokerage_name_main            | 1077569     | 614280     | 463289         | 57.01           |
+| public       | new_unified_agents                  | marketing_main                 | 1077569     | 868045     | 209524         | 80.56           |
+| public       | new_unified_agents                  | rt_verified_agent_main         | 1077569     | 0          | 1077569        | 0.00            |
+| public       | new_unified_agents                  | source_1                       | 1077569     | 297903     | 779666         | 27.65           |
+| public       | new_unified_agents                  | entity                         | 1077569     | 1077569    | 0              | 100.00          |
+| public       | new_unified_agents                  | maps_id                        | 1077569     | 1020877    | 56692          | 94.74           |
+| public       | new_unified_agents                  | is_primary_contact             | 1077569     | 1045240    | 32329          | 97.00           |
+| public       | new_unified_agents                  | agent_designation_ai           | 1077569     | 587274     | 490295         | 54.50           |
+| public       | only_agents_1                       | id                             | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_1                       | list_name                      | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_1                       | list_company                   | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_1                       | list_location                  | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_1                       | full_name_zw                   | 5100        | 83         | 5017           | 1.63            |
+| public       | only_agents_1                       | agent_designation_zw           | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_1                       | team_name_zw                   | 5100        | 995        | 4105           | 19.51           |
+| public       | only_agents_1                       | about_agent_zw                 | 5100        | 7          | 5093           | 0.14            |
+| public       | only_agents_1                       | agent_address_zw               | 5100        | 345        | 4755           | 6.76            |
+| public       | only_agents_1                       | address_url_zw                 | 5100        | 356        | 4744           | 6.98            |
+| public       | only_agents_1                       | agent_email_zw                 | 5100        | 104        | 4996           | 2.04            |
+| public       | only_agents_1                       | personal_email                 | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_1                       | agent_phone_numbers_zw         | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_1                       | zillow_profile_url_zw          | 5100        | 60         | 5040           | 1.18            |
+| public       | only_agents_1                       | sales_last_12_months_zw        | 5100        | 77         | 5023           | 1.51            |
+| public       | only_agents_1                       | total_sales_zw                 | 5100        | 77         | 5023           | 1.51            |
+| public       | only_agents_1                       | average_price_zw               | 5100        | 145        | 4955           | 2.84            |
+| public       | only_agents_1                       | price_range_zw                 | 5100        | 77         | 5023           | 1.51            |
+| public       | only_agents_1                       | website_zw                     | 5100        | 1149       | 3951           | 22.53           |
+| public       | only_agents_1                       | linkedin_url_zw                | 5100        | 3106       | 1994           | 60.90           |
+| public       | only_agents_1                       | facebook_url_zw                | 5100        | 1791       | 3309           | 35.12           |
+| public       | only_agents_1                       | instagram_url_zw               | 5100        | 4705       | 395            | 92.25           |
+| public       | only_agents_1                       | twitter_url_zw                 | 5100        | 4256       | 844            | 83.45           |
+| public       | only_agents_1                       | youtube_url_zw                 | 5100        | 4886       | 214            | 95.80           |
+| public       | only_agents_1                       | tiktok_url_zw                  | 5100        | 5027       | 73             | 98.57           |
+| public       | only_agents_1                       | other_socials_zw               | 5100        | 5064       | 36             | 99.29           |
+| public       | only_agents_1                       | brokerage_name                 | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_1                       | transaction_zipcodes           | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_1                       | license_id                     | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_1                       | industry                       | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_1                       | fello_customer_status          | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_1                       | date_of_churn                  | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_1                       | is_marketing_contact           | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_1                       | created_at                     | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_1                       | updated_at                     | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_1                       | team_id                        | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_1                       | rank                           | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_1_duplicate             | id                             | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_1_duplicate             | list_name                      | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_1_duplicate             | list_company                   | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_1_duplicate             | list_location                  | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_1_duplicate             | full_name_zw                   | 5100        | 83         | 5017           | 1.63            |
+| public       | only_agents_1_duplicate             | agent_designation_zw           | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_1_duplicate             | team_name_zw                   | 5100        | 995        | 4105           | 19.51           |
+| public       | only_agents_1_duplicate             | about_agent_zw                 | 5100        | 7          | 5093           | 0.14            |
+| public       | only_agents_1_duplicate             | agent_address_zw               | 5100        | 345        | 4755           | 6.76            |
+| public       | only_agents_1_duplicate             | address_url_zw                 | 5100        | 356        | 4744           | 6.98            |
+| public       | only_agents_1_duplicate             | agent_email_zw                 | 5100        | 104        | 4996           | 2.04            |
+| public       | only_agents_1_duplicate             | personal_email                 | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_1_duplicate             | agent_phone_numbers_zw         | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_1_duplicate             | zillow_profile_url_zw          | 5100        | 60         | 5040           | 1.18            |
+| public       | only_agents_1_duplicate             | sales_last_12_months_zw        | 5100        | 77         | 5023           | 1.51            |
+| public       | only_agents_1_duplicate             | total_sales_zw                 | 5100        | 77         | 5023           | 1.51            |
+| public       | only_agents_1_duplicate             | average_price_zw               | 5100        | 145        | 4955           | 2.84            |
+| public       | only_agents_1_duplicate             | price_range_zw                 | 5100        | 77         | 5023           | 1.51            |
+| public       | only_agents_1_duplicate             | website_zw                     | 5100        | 1149       | 3951           | 22.53           |
+| public       | only_agents_1_duplicate             | linkedin_url_zw                | 5100        | 3106       | 1994           | 60.90           |
+| public       | only_agents_1_duplicate             | facebook_url_zw                | 5100        | 1791       | 3309           | 35.12           |
+| public       | only_agents_1_duplicate             | instagram_url_zw               | 5100        | 4705       | 395            | 92.25           |
+| public       | only_agents_1_duplicate             | twitter_url_zw                 | 5100        | 4256       | 844            | 83.45           |
+| public       | only_agents_1_duplicate             | youtube_url_zw                 | 5100        | 4886       | 214            | 95.80           |
+| public       | only_agents_1_duplicate             | tiktok_url_zw                  | 5100        | 5027       | 73             | 98.57           |
+| public       | only_agents_1_duplicate             | other_socials_zw               | 5100        | 5064       | 36             | 99.29           |
+| public       | only_agents_1_duplicate             | brokerage_name                 | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_1_duplicate             | transaction_zipcodes           | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_1_duplicate             | license_id                     | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_1_duplicate             | industry                       | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_1_duplicate             | fello_customer_status          | 5100        | 5078       | 22             | 99.57           |
+| public       | only_agents_1_duplicate             | date_of_churn                  | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_1_duplicate             | is_marketing_contact           | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_1_duplicate             | created_at                     | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_1_duplicate             | updated_at                     | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_1_duplicate             | team_id                        | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_1_duplicate             | rank                           | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_2                       | id                             | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_2                       | list_name                      | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_2                       | list_company                   | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_2                       | list_location                  | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_2                       | full_name_zw                   | 5100        | 102        | 4998           | 2.00            |
+| public       | only_agents_2                       | agent_designation_zw           | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_2                       | team_name_zw                   | 5100        | 1076       | 4024           | 21.10           |
+| public       | only_agents_2                       | about_agent_zw                 | 5100        | 38         | 5062           | 0.75            |
+| public       | only_agents_2                       | agent_address_zw               | 5100        | 420        | 4680           | 8.24            |
+| public       | only_agents_2                       | address_url_zw                 | 5100        | 432        | 4668           | 8.47            |
+| public       | only_agents_2                       | agent_email_zw                 | 5100        | 127        | 4973           | 2.49            |
+| public       | only_agents_2                       | personal_email                 | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_2                       | agent_phone_numbers_zw         | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_2                       | zillow_profile_url_zw          | 5100        | 67         | 5033           | 1.31            |
+| public       | only_agents_2                       | sales_last_12_months_zw        | 5100        | 98         | 5002           | 1.92            |
+| public       | only_agents_2                       | total_sales_zw                 | 5100        | 98         | 5002           | 1.92            |
+| public       | only_agents_2                       | average_price_zw               | 5100        | 184        | 4916           | 3.61            |
+| public       | only_agents_2                       | price_range_zw                 | 5100        | 98         | 5002           | 1.92            |
+| public       | only_agents_2                       | website_zw                     | 5100        | 1323       | 3777           | 25.94           |
+| public       | only_agents_2                       | linkedin_url_zw                | 5100        | 3235       | 1865           | 63.43           |
+| public       | only_agents_2                       | facebook_url_zw                | 5100        | 2026       | 3074           | 39.73           |
+| public       | only_agents_2                       | instagram_url_zw               | 5100        | 4743       | 357            | 93.00           |
+| public       | only_agents_2                       | twitter_url_zw                 | 5100        | 4331       | 769            | 84.92           |
+| public       | only_agents_2                       | youtube_url_zw                 | 5100        | 4934       | 166            | 96.75           |
+| public       | only_agents_2                       | tiktok_url_zw                  | 5100        | 5046       | 54             | 98.94           |
+| public       | only_agents_2                       | other_socials_zw               | 5100        | 5057       | 43             | 99.16           |
+| public       | only_agents_2                       | brokerage_name                 | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_2                       | transaction_zipcodes           | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_2                       | license_id                     | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_2                       | industry                       | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_2                       | fello_customer_status          | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_2                       | date_of_churn                  | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_2                       | is_marketing_contact           | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_2                       | created_at                     | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_2                       | updated_at                     | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_2                       | team_id                        | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_2                       | rank                           | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_3                       | id                             | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_3                       | list_name                      | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_3                       | list_company                   | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_3                       | list_location                  | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_3                       | full_name_zw                   | 5100        | 567        | 4533           | 11.12           |
+| public       | only_agents_3                       | agent_designation_zw           | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_3                       | team_name_zw                   | 5100        | 1509       | 3591           | 29.59           |
+| public       | only_agents_3                       | about_agent_zw                 | 5100        | 6          | 5094           | 0.12            |
+| public       | only_agents_3                       | agent_address_zw               | 5100        | 853        | 4247           | 16.73           |
+| public       | only_agents_3                       | address_url_zw                 | 5100        | 853        | 4247           | 16.73           |
+| public       | only_agents_3                       | agent_email_zw                 | 5100        | 559        | 4541           | 10.96           |
+| public       | only_agents_3                       | personal_email                 | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_3                       | agent_phone_numbers_zw         | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_3                       | zillow_profile_url_zw          | 5100        | 80         | 5020           | 1.57            |
+| public       | only_agents_3                       | sales_last_12_months_zw        | 5100        | 559        | 4541           | 10.96           |
+| public       | only_agents_3                       | total_sales_zw                 | 5100        | 559        | 4541           | 10.96           |
+| public       | only_agents_3                       | average_price_zw               | 5100        | 645        | 4455           | 12.65           |
+| public       | only_agents_3                       | price_range_zw                 | 5100        | 559        | 4541           | 10.96           |
+| public       | only_agents_3                       | website_zw                     | 5100        | 1597       | 3503           | 31.31           |
+| public       | only_agents_3                       | linkedin_url_zw                | 5100        | 3344       | 1756           | 65.57           |
+| public       | only_agents_3                       | facebook_url_zw                | 5100        | 2262       | 2838           | 44.35           |
+| public       | only_agents_3                       | instagram_url_zw               | 5100        | 4781       | 319            | 93.75           |
+| public       | only_agents_3                       | twitter_url_zw                 | 5100        | 4382       | 718            | 85.92           |
+| public       | only_agents_3                       | youtube_url_zw                 | 5100        | 4939       | 161            | 96.84           |
+| public       | only_agents_3                       | tiktok_url_zw                  | 5100        | 5047       | 53             | 98.96           |
+| public       | only_agents_3                       | other_socials_zw               | 5100        | 5050       | 50             | 99.02           |
+| public       | only_agents_3                       | brokerage_name                 | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_3                       | transaction_zipcodes           | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_3                       | license_id                     | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_3                       | industry                       | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_3                       | fello_customer_status          | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_3                       | date_of_churn                  | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_3                       | is_marketing_contact           | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_3                       | created_at                     | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_3                       | updated_at                     | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_3                       | team_id                        | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_3                       | rank                           | 5100        | 60         | 5040           | 1.18            |
+| public       | only_agents_4                       | id                             | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_4                       | list_name                      | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_4                       | list_company                   | 5100        | 2          | 5098           | 0.04            |
+| public       | only_agents_4                       | list_location                  | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_4                       | full_name_zw                   | 5100        | 524        | 4576           | 10.27           |
+| public       | only_agents_4                       | agent_designation_zw           | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_4                       | team_name_zw                   | 5100        | 1377       | 3723           | 27.00           |
+| public       | only_agents_4                       | about_agent_zw                 | 5100        | 13         | 5087           | 0.25            |
+| public       | only_agents_4                       | agent_address_zw               | 5100        | 787        | 4313           | 15.43           |
+| public       | only_agents_4                       | address_url_zw                 | 5100        | 788        | 4312           | 15.45           |
+| public       | only_agents_4                       | agent_email_zw                 | 5100        | 518        | 4582           | 10.16           |
+| public       | only_agents_4                       | personal_email                 | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_4                       | agent_phone_numbers_zw         | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_4                       | zillow_profile_url_zw          | 5100        | 95         | 5005           | 1.86            |
+| public       | only_agents_4                       | sales_last_12_months_zw        | 5100        | 518        | 4582           | 10.16           |
+| public       | only_agents_4                       | total_sales_zw                 | 5100        | 518        | 4582           | 10.16           |
+| public       | only_agents_4                       | average_price_zw               | 5100        | 579        | 4521           | 11.35           |
+| public       | only_agents_4                       | price_range_zw                 | 5100        | 518        | 4582           | 10.16           |
+| public       | only_agents_4                       | website_zw                     | 5100        | 1328       | 3772           | 26.04           |
+| public       | only_agents_4                       | linkedin_url_zw                | 5100        | 3011       | 2089           | 59.04           |
+| public       | only_agents_4                       | facebook_url_zw                | 5100        | 2213       | 2887           | 43.39           |
+| public       | only_agents_4                       | instagram_url_zw               | 5100        | 4675       | 425            | 91.67           |
+| public       | only_agents_4                       | twitter_url_zw                 | 5100        | 4308       | 792            | 84.47           |
+| public       | only_agents_4                       | youtube_url_zw                 | 5100        | 4909       | 191            | 96.25           |
+| public       | only_agents_4                       | tiktok_url_zw                  | 5100        | 5053       | 47             | 99.08           |
+| public       | only_agents_4                       | other_socials_zw               | 5100        | 5061       | 39             | 99.24           |
+| public       | only_agents_4                       | brokerage_name                 | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_4                       | transaction_zipcodes           | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_4                       | license_id                     | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_4                       | industry                       | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_4                       | fello_customer_status          | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_4                       | date_of_churn                  | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_4                       | is_marketing_contact           | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_4                       | created_at                     | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_4                       | updated_at                     | 5100        | 0          | 5100           | 0.00            |
+| public       | only_agents_4                       | team_id                        | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_4                       | rank                           | 5100        | 5100       | 0              | 100.00          |
+| public       | only_agents_5                       | id                             | 4900        | 0          | 4900           | 0.00            |
+| public       | only_agents_5                       | list_name                      | 4900        | 0          | 4900           | 0.00            |
+| public       | only_agents_5                       | list_company                   | 4900        | 2          | 4898           | 0.04            |
+| public       | only_agents_5                       | list_location                  | 4900        | 0          | 4900           | 0.00            |
+| public       | only_agents_5                       | full_name_zw                   | 4900        | 4280       | 620            | 87.35           |
+| public       | only_agents_5                       | agent_designation_zw           | 4900        | 4263       | 637            | 87.00           |
+| public       | only_agents_5                       | team_name_zw                   | 4900        | 4542       | 358            | 92.69           |
+| public       | only_agents_5                       | about_agent_zw                 | 4900        | 4264       | 636            | 87.02           |
+| public       | only_agents_5                       | agent_address_zw               | 4900        | 4309       | 591            | 87.94           |
+| public       | only_agents_5                       | address_url_zw                 | 4900        | 4309       | 591            | 87.94           |
+| public       | only_agents_5                       | agent_email_zw                 | 4900        | 4281       | 619            | 87.37           |
+| public       | only_agents_5                       | personal_email                 | 4900        | 4900       | 0              | 100.00          |
+| public       | only_agents_5                       | agent_phone_numbers_zw         | 4900        | 4263       | 637            | 87.00           |
+| public       | only_agents_5                       | zillow_profile_url_zw          | 4900        | 4274       | 626            | 87.22           |
+| public       | only_agents_5                       | sales_last_12_months_zw        | 4900        | 4275       | 625            | 87.24           |
+| public       | only_agents_5                       | total_sales_zw                 | 4900        | 4275       | 625            | 87.24           |
+| public       | only_agents_5                       | average_price_zw               | 4900        | 4284       | 616            | 87.43           |
+| public       | only_agents_5                       | price_range_zw                 | 4900        | 4275       | 625            | 87.24           |
+| public       | only_agents_5                       | website_zw                     | 4900        | 4370       | 530            | 89.18           |
+| public       | only_agents_5                       | linkedin_url_zw                | 4900        | 4591       | 309            | 93.69           |
+| public       | only_agents_5                       | facebook_url_zw                | 4900        | 4504       | 396            | 91.92           |
+| public       | only_agents_5                       | instagram_url_zw               | 4900        | 4857       | 43             | 99.12           |
+| public       | only_agents_5                       | twitter_url_zw                 | 4900        | 4762       | 138            | 97.18           |
+| public       | only_agents_5                       | youtube_url_zw                 | 4900        | 4881       | 19             | 99.61           |
+| public       | only_agents_5                       | tiktok_url_zw                  | 4900        | 4898       | 2              | 99.96           |
+| public       | only_agents_5                       | other_socials_zw               | 4900        | 4896       | 4              | 99.92           |
+| public       | only_agents_5                       | brokerage_name                 | 4900        | 0          | 4900           | 0.00            |
+| public       | only_agents_5                       | transaction_zipcodes           | 4900        | 4900       | 0              | 100.00          |
+| public       | only_agents_5                       | license_id                     | 4900        | 4900       | 0              | 100.00          |
+| public       | only_agents_5                       | industry                       | 4900        | 4263       | 637            | 87.00           |
+| public       | only_agents_5                       | fello_customer_status          | 4900        | 4900       | 0              | 100.00          |
+| public       | only_agents_5                       | date_of_churn                  | 4900        | 4900       | 0              | 100.00          |
+| public       | only_agents_5                       | is_marketing_contact           | 4900        | 4900       | 0              | 100.00          |
+| public       | only_agents_5                       | created_at                     | 4900        | 4263       | 637            | 87.00           |
+| public       | only_agents_5                       | updated_at                     | 4900        | 4263       | 637            | 87.00           |
+| public       | only_agents_5                       | team_id                        | 4900        | 4900       | 0              | 100.00          |
+| public       | only_agents_5                       | rank                           | 4900        | 4900       | 0              | 100.00          |
+| public       | only_agents_6                       | id                             | 5297        | 0          | 5297           | 0.00            |
+| public       | only_agents_6                       | list_name                      | 5297        | 0          | 5297           | 0.00            |
+| public       | only_agents_6                       | list_company                   | 5297        | 1          | 5296           | 0.02            |
+| public       | only_agents_6                       | list_location                  | 5297        | 0          | 5297           | 0.00            |
+| public       | only_agents_6                       | full_name_zw                   | 5297        | 4595       | 702            | 86.75           |
+| public       | only_agents_6                       | agent_designation_zw           | 5297        | 4576       | 721            | 86.39           |
+| public       | only_agents_6                       | team_name_zw                   | 5297        | 4922       | 375            | 92.92           |
+| public       | only_agents_6                       | about_agent_zw                 | 5297        | 4577       | 720            | 86.41           |
+| public       | only_agents_6                       | agent_address_zw               | 5297        | 4663       | 634            | 88.03           |
+| public       | only_agents_6                       | address_url_zw                 | 5297        | 4663       | 634            | 88.03           |
+| public       | only_agents_6                       | agent_email_zw                 | 5297        | 4597       | 700            | 86.78           |
+| public       | only_agents_6                       | personal_email                 | 5297        | 5297       | 0              | 100.00          |
+| public       | only_agents_6                       | agent_phone_numbers_zw         | 5297        | 4576       | 721            | 86.39           |
+| public       | only_agents_6                       | zillow_profile_url_zw          | 5297        | 4587       | 710            | 86.60           |
+| public       | only_agents_6                       | sales_last_12_months_zw        | 5297        | 4590       | 707            | 86.65           |
+| public       | only_agents_6                       | total_sales_zw                 | 5297        | 4590       | 707            | 86.65           |
+| public       | only_agents_6                       | average_price_zw               | 5297        | 4610       | 687            | 87.03           |
+| public       | only_agents_6                       | price_range_zw                 | 5297        | 4590       | 707            | 86.65           |
+| public       | only_agents_6                       | website_zw                     | 5297        | 4717       | 580            | 89.05           |
+| public       | only_agents_6                       | linkedin_url_zw                | 5297        | 4992       | 305            | 94.24           |
+| public       | only_agents_6                       | facebook_url_zw                | 5297        | 4954       | 343            | 93.52           |
+| public       | only_agents_6                       | instagram_url_zw               | 5297        | 5262       | 35             | 99.34           |
+| public       | only_agents_6                       | twitter_url_zw                 | 5297        | 5189       | 108            | 97.96           |
+| public       | only_agents_6                       | youtube_url_zw                 | 5297        | 5278       | 19             | 99.64           |
+| public       | only_agents_6                       | tiktok_url_zw                  | 5297        | 5293       | 4              | 99.92           |
+| public       | only_agents_6                       | other_socials_zw               | 5297        | 5296       | 1              | 99.98           |
+| public       | only_agents_6                       | brokerage_name                 | 5297        | 0          | 5297           | 0.00            |
+| public       | only_agents_6                       | transaction_zipcodes           | 5297        | 5297       | 0              | 100.00          |
+| public       | only_agents_6                       | license_id                     | 5297        | 5297       | 0              | 100.00          |
+| public       | only_agents_6                       | industry                       | 5297        | 4576       | 721            | 86.39           |
+| public       | only_agents_6                       | fello_customer_status          | 5297        | 5297       | 0              | 100.00          |
+| public       | only_agents_6                       | date_of_churn                  | 5297        | 5297       | 0              | 100.00          |
+| public       | only_agents_6                       | is_marketing_contact           | 5297        | 5297       | 0              | 100.00          |
+| public       | only_agents_6                       | created_at                     | 5297        | 4576       | 721            | 86.39           |
+| public       | only_agents_6                       | updated_at                     | 5297        | 4576       | 721            | 86.39           |
+| public       | only_agents_6                       | team_id                        | 5297        | 5297       | 0              | 100.00          |
+| public       | only_agents_6                       | rank                           | 5297        | 5297       | 0              | 100.00          |
+| public       | Team_Summary                        | uuid                           | 98376       | 0          | 98376          | 0.00            |
+| public       | Team_Summary                        | team_name                      | 98376       | 30         | 98346          | 0.03            |
+| public       | Team_Summary                        | ⚠️team_id_⚠️(DONT_USE_THIS!!!) | 98376       | 90869      | 7507           | 92.37           |
+| public       | Team_Summary                        | team_size_count                | 98376       | 1009       | 97367          | 1.03            |
+| public       | Team_Summary                        | brokerage_old                  | 98376       | 23173      | 75203          | 23.56           |
+| public       | Team_Summary                        | state                          | 98376       | 31313      | 67063          | 31.83           |
+| public       | Team_Summary                        | city                           | 98376       | 21         | 98355          | 0.02            |
+| public       | Team_Summary                        | zip_code                       | 98376       | 92458      | 5918           | 93.98           |
+| public       | Team_Summary                        | source                         | 98376       | 0          | 98376          | 0.00            |
+| public       | Team_Summary                        | size                           | 98376       | 0          | 98376          | 0.00            |
+| public       | Team_Summary                        | rank_2025                      | 98376       | 94410      | 3966           | 95.97           |
+| public       | Team_Summary                        | volume                         | 98376       | 93828      | 4548           | 95.38           |
+| public       | Team_Summary                        | sides                          | 98376       | 93828      | 4548           | 95.38           |
+| public       | Team_Summary                        | Website                        | 98376       | 64056      | 34320          | 65.11           |
+| public       | Team_Summary                        | fello_customer_status          | 98376       | 0          | 98376          | 0.00            |
+| public       | Team_Summary                        | rt_verified_team_main          | 98376       | 0          | 98376          | 0.00            |
+| public       | Team_Summary                        | team_crm_main                  | 98376       | 69495      | 28881          | 70.64           |
+| public       | Team_Summary                        | entity                         | 98376       | 82172      | 16204          | 83.53           |
+| public       | Team_Summary                        | uuid_text                      | 98376       | 75753      | 22623          | 77.00           |
+| public       | Team_Summary                        | serper_results                 | 98376       | 50532      | 47844          | 51.37           |
+| public       | Team_Summary                        | ai_website                     | 98376       | 50532      | 47844          | 51.37           |
+| public       | Team_Summary                        | reasoning                      | 98376       | 50532      | 47844          | 51.37           |
+| public       | Team_Summary                        | website_url_logo_dev           | 98376       | 64429      | 33947          | 65.49           |
+| public       | Team_Summary                        | marketing_tools                | 98376       | 67498      | 30878          | 68.61           |
+| public       | Team_Summary                        | brokerage                      | 98376       | 23173      | 75203          | 23.56           |
+| public       | Team_Summary_1                      | uuid                           | 23198       | 0          | 23198          | 0.00            |
+| public       | Team_Summary_1                      | team_name                      | 23198       | 0          | 23198          | 0.00            |
+| public       | Team_Summary_1                      | team_id                        | 23198       | 20677      | 2521           | 89.13           |
+| public       | Team_Summary_1                      | team_size_count                | 23198       | 1396       | 21802          | 6.02            |
+| public       | Team_Summary_1                      | brokerage                      | 23198       | 195        | 23003          | 0.84            |
+| public       | Team_Summary_1                      | state                          | 23198       | 0          | 23198          | 0.00            |
+| public       | Team_Summary_1                      | city                           | 23198       | 0          | 23198          | 0.00            |
+| public       | Team_Summary_1                      | zip_code                       | 23198       | 17279      | 5919           | 74.48           |
+| public       | Team_Summary_1                      | source                         | 23198       | 0          | 23198          | 0.00            |
+| public       | Team_Summary_1                      | size                           | 23198       | 20         | 23178          | 0.09            |
+| public       | Team_Summary_1                      | rank_2025                      | 23198       | 19232      | 3966           | 82.90           |
+| public       | Team_Summary_1                      | volume                         | 23198       | 18650      | 4548           | 80.39           |
+| public       | Team_Summary_1                      | sides                          | 23198       | 18650      | 4548           | 80.39           |
+| public       | Team_Summary_1                      | Website                        | 23198       | 19757      | 3441           | 85.17           |
+| public       | Team_Summary_1                      | fello_customer_status          | 23198       | 23198      | 0              | 100.00          |
+| public       | Team_Summary_1                      | entity                         | 23198       | 6974       | 16224          | 30.06           |
+| public       | Team_Summary_1                      | team_crm_main                  | 23198       | 21390      | 1808           | 92.21           |
+| public       | Team_Summary_1                      | uuid_text                      | 23198       | 20         | 23178          | 0.09            |
+| public       | Team_Summary_1                      | rt_verified_team_main          | 23198       | 19205      | 3993           | 82.79           |
+| public       | Team_Summary_2                      | uuid                           | 138612      | 0          | 138612         | 0.00            |
+| public       | Team_Summary_2                      | team_name                      | 138612      | 2928       | 135684         | 2.11            |
+| public       | Team_Summary_2                      | team_id                        | 138612      | 59386      | 79226          | 42.84           |
+| public       | Team_Summary_2                      | team_size_count                | 138612      | 0          | 138612         | 0.00            |
+| public       | Team_Summary_2                      | brokerage                      | 138612      | 123238     | 15374          | 88.91           |
+| public       | Team_Summary_2                      | state                          | 138612      | 0          | 138612         | 0.00            |
+| public       | Team_Summary_2                      | city                           | 138612      | 1917       | 136695         | 1.38            |
+| public       | Team_Summary_2                      | zip_code                       | 138612      | 138612     | 0              | 100.00          |
+| public       | Team_Summary_2                      | source                         | 138612      | 0          | 138612         | 0.00            |
+| public       | Team_Summary_2                      | size                           | 138612      | 138612     | 0              | 100.00          |
+| public       | Team_Summary_2                      | rank_2025                      | 138612      | 138612     | 0              | 100.00          |
+| public       | Team_Summary_2                      | volume                         | 138612      | 138612     | 0              | 100.00          |
+| public       | Team_Summary_2                      | sides                          | 138612      | 138612     | 0              | 100.00          |
+| public       | Team_Summary_2                      | Website                        | 138612      | 138612     | 0              | 100.00          |
+| public       | Team_Summary_2                      | fello_customer_status          | 138612      | 138612     | 0              | 100.00          |
+| public       | Team_Summary_2                      | entity                         | 138612      | 59386      | 79226          | 42.84           |
+| public       | Team_Summary_2                      | team_crm_main                  | 138612      | 138612     | 0              | 100.00          |
+| public       | Team_Summary_2                      | uuid_text                      | 138612      | 138612     | 0              | 100.00          |
+| public       | Team_Summary_2                      | rt_verified_team_main          | 138612      | 138612     | 0              | 100.00          |
+| public       | Team_Summary_2                      | Status                         | 138612      | 44447      | 94165          | 32.07           |
+| public       | Team_Summary_2                      | normalized_entity              | 138612      | 59386      | 79226          | 42.84           |
+| public       | Team_Summary_2                      | team_club_id                   | 138612      | 138612     | 0              | 100.00          |
+| public       | Team_Summary_2                      | normalized_team_name           | 138612      | 79226      | 59386          | 57.16           |
+| public       | Team_Summary_2                      | match                          | 138612      | 138483     | 129            | 99.91           |
+| public       | wsj_real_trends_teams_large         | id                             | 1096        | 0          | 1096           | 0.00            |
+| public       | wsj_real_trends_teams_large         | Team_Name                      | 1096        | 0          | 1096           | 0.00            |
+| public       | wsj_real_trends_teams_large         | Brokerage                      | 1096        | 51         | 1045           | 4.65            |
+| public       | wsj_real_trends_teams_large         | Rank_2025                      | 1096        | 56         | 1040           | 5.11            |
+| public       | wsj_real_trends_teams_large         | Volume                         | 1096        | 0          | 1096           | 0.00            |
+| public       | wsj_real_trends_teams_large         | Sides                          | 1096        | 0          | 1096           | 0.00            |
+| public       | wsj_real_trends_teams_large         | Location                       | 1096        | 0          | 1096           | 0.00            |
+| public       | wsj_real_trends_teams_large         | Size                           | 1096        | 0          | 1096           | 0.00            |
+| public       | wsj_real_trends_teams_large         | RT_URLs                        | 1096        | 0          | 1096           | 0.00            |
+| public       | wsj_real_trends_teams_large         | Website                        | 1096        | 0          | 1096           | 0.00            |
+| public       | wsj_real_trends_teams_medium        | id                             | 2897        | 0          | 2897           | 0.00            |
+| public       | wsj_real_trends_teams_medium        | Team_Name                      | 2897        | 0          | 2897           | 0.00            |
+| public       | wsj_real_trends_teams_medium        | Brokerage                      | 2897        | 103        | 2794           | 3.56            |
+| public       | wsj_real_trends_teams_medium        | Rank_2025                      | 2897        | 519        | 2378           | 17.92           |
+| public       | wsj_real_trends_teams_medium        | Volume                         | 2897        | 0          | 2897           | 0.00            |
+| public       | wsj_real_trends_teams_medium        | Sides                          | 2897        | 0          | 2897           | 0.00            |
+| public       | wsj_real_trends_teams_medium        | Location                       | 2897        | 0          | 2897           | 0.00            |
+| public       | wsj_real_trends_teams_medium        | Size                           | 2897        | 0          | 2897           | 0.00            |
+| public       | wsj_real_trends_teams_medium        | Website                        | 2897        | 0          | 2897           | 0.00            |
+| public       | wsj_real_trends_teams_mega          | id                             | 555         | 0          | 555            | 0.00            |
+| public       | wsj_real_trends_teams_mega          | Team_Name                      | 555         | 0          | 555            | 0.00            |
+| public       | wsj_real_trends_teams_mega          | Brokerage                      | 555         | 41         | 514            | 7.39            |
+| public       | wsj_real_trends_teams_mega          | Rank_2025                      | 555         | 7          | 548            | 1.26            |
+| public       | wsj_real_trends_teams_mega          | Volume                         | 555         | 0          | 555            | 0.00            |
+| public       | wsj_real_trends_teams_mega          | Sides                          | 555         | 0          | 555            | 0.00            |
+| public       | wsj_real_trends_teams_mega          | Location                       | 555         | 0          | 555            | 0.00            |
+| public       | wsj_real_trends_teams_mega          | Size                           | 555         | 0          | 555            | 0.00            |
+| public       | wsj_real_trends_teams_mega          | RT_URLs                        | 555         | 0          | 555            | 0.00            |
+| public       | wsj_real_trends_teams_mega          | team_size_count                | 555         | 121        | 434            | 21.80           |
+| public       | wsj_real_trends_teams_mega          | city                           | 555         | 0          | 555            | 0.00            |
+| public       | wsj_real_trends_teams_mega          | state                          | 555         | 0          | 555            | 0.00            |
+| public       | wsj_real_trends_teams_mega          | Website                        | 555         | 0          | 555            | 0.00            |
+| public       | wsj_real_trends_teams_small         | id                             | 9830        | 0          | 9830           | 0.00            |
+| public       | wsj_real_trends_teams_small         | Team_Name                      | 9830        | 0          | 9830           | 0.00            |
+| public       | wsj_real_trends_teams_small         | Brokerage                      | 9830        | 188        | 9642           | 1.91            |
+| public       | wsj_real_trends_teams_small         | Rank_2025                      | 9830        | 4278       | 5552           | 43.52           |
+| public       | wsj_real_trends_teams_small         | Volume                         | 9830        | 5          | 9825           | 0.05            |
+| public       | wsj_real_trends_teams_small         | Sides                          | 9830        | 1          | 9829           | 0.01            |
+| public       | wsj_real_trends_teams_small         | Location                       | 9830        | 0          | 9830           | 0.00            |
+| public       | wsj_real_trends_teams_small         | Size                           | 9830        | 0          | 9830           | 0.00            |
+| public       | wsj_real_trends_teams_small         | Website                        | 9830        | 0          | 9830           | 0.00            |
