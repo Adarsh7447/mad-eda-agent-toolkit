@@ -10,7 +10,7 @@
           "parameters": [
             {
               "name": "X-API-KEY",
-              "value": "4094a09649d62bbadc26c8072697637b8e31caf1"
+              "value": ""
             },
             {
               "name": "Content-Type",
@@ -168,7 +168,7 @@
       "name": "Update a row",
       "credentials": {
         "supabaseApi": {
-          "id": "BfbunFb9qartLI7X",
+          "id": "",
           "name": "Supabase account"
         }
       }
@@ -196,7 +196,7 @@
       "name": "Get a row",
       "credentials": {
         "supabaseApi": {
-          "id": "BfbunFb9qartLI7X",
+          "id": "",
           "name": "Supabase account"
         }
       }
@@ -314,7 +314,7 @@
       "name": "xAI Grok Chat Model",
       "credentials": {
         "xAiApi": {
-          "id": "vE0kFwrQ1xeCqJed",
+          "id": "",
           "name": "xAi account"
         }
       }
